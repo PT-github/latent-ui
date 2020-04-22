@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-21 10:33:10
  * @LastEditors: PT
- * @LastEditTime: 2020-04-21 16:15:56
+ * @LastEditTime: 2020-04-22 19:18:13
  * @Description: 
  */
 import commonjs from 'rollup-plugin-commonjs'
@@ -79,7 +79,8 @@ function createConfig (file, name) {
       // terser(),
       resolve(),
       babel({
-        exclude: ['node_modules/**']
+        exclude: ['node_modules/**'],
+        runtimeHelpers: true
       }),
       commonjs()
     ],

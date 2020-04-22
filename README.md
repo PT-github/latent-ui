@@ -19,6 +19,9 @@
 * precss PreCSS允许您在CSS中使用类似于saas的标记和分阶段的CSS特性。
 * autoprefixer PostCSS插件解析CSS，用于给css添加兼容前缀
 
+### 参考资料
+* https://github.com/rollup/awesome 依赖
+
 ## webpack Unit Test 依赖包
 * babel转码 @babel/core @babel/preset-env @babel/plugin-transform-runtime
 * babel-loader
@@ -33,3 +36,11 @@
 * @vue/test-utils
 * vue-loader
 针对上述对应版本进行安装，否则可能会出现版本问题
+### 参考资料
+* http://zinserjan.github.io/mocha-webpack/docs/installation/webpack-configuration.html mocha-webpack配置
+* https://github.com/PT-github/vue-unit-test-perf-comparison
+* https://vue-test-utils.vuejs.org/zh/
+* https://laracasts.com/discuss/channels/testing/issue-with-vue-test-utils-in-laravel 版本问题
+
+#### .babelrc在vscode中警告
+* https://code.visualstudio.com/Docs/languages/json#_json-schemas-settings
