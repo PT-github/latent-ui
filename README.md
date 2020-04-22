@@ -3,6 +3,8 @@
 
 # npm run build
 打包
+# npm run test
+单元测试
 
 # 第三方包描述
 ## rollup依赖包
