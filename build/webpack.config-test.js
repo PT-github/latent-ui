@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-22 18:08:13
  * @LastEditors: PT
- * @LastEditTime: 2020-04-22 18:08:43
+ * @LastEditTime: 2020-04-22 19:47:14
  * @Description: vue单元测试 webpack配置
  */
 var nodeExternals = require('webpack-node-externals')
@@ -23,7 +23,25 @@ module.exports = {
         options: {
           presets: ['@babel/preset-env']
         }
-      }
+      },
+      {
+        test: /\.(le|c)ss$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'postcss-loader',
+          'less-loader'
+        ]
+      },
+      {
+        test: /\.(sa|sc)ss$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'postcss-loader',
+          'sass-loader'
+        ]
+      },
     ]
   },
   externals: [nodeExternals()],

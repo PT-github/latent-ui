@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-20 20:53:15
  * @LastEditors: PT
- * @LastEditTime: 2020-04-22 18:51:23
+ * @LastEditTime: 2020-04-22 19:49:52
  * @Description: 
  -->
 <template>
@@ -35,3 +35,9 @@
   }
 
 </script>
+<style lang="scss" scoped>
+.tab {
+  width: 200px;
+  display: flex;
+}
+</style>
