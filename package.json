@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/PT-github/elem-extension-ui.git"
   },
-  "keywords": [],
+  "keywords": [ "rollup", "webpack", "elementui", "vue", "ui", "unit test", "docs" ],
   "author": "",
   "license": "MIT",
   "bugs": {
