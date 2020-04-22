@@ -1,6 +1,6 @@
 {
   "name": "elem-extension-ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "基于elementUI的UI库",
   "main": "lib/index.js",
   "scripts": {
