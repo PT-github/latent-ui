@@ -1,0 +1,20 @@
+[
+  {
+    "label": "指南",
+    "name": "readme"
+  },
+  {
+    "label": "测试",
+    "name": "readme",
+    "children": [
+      {
+        "label": "按钮",
+        "name": "button"
+      },
+      {
+        "label": "指南2",
+        "name": "readme"
+      }
+    ]
+  }
+]
