@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-23 09:13:00
  * @LastEditors: PT
- * @LastEditTime: 2020-04-23 09:39:12
+ * @LastEditTime: 2020-04-23 12:13:12
  * @Description: 文档打包webpack配置
  */
 var nodeExternals = require('webpack-node-externals')
@@ -10,6 +10,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ProgressBarWebpackPlugin = require('progress-bar-webpack-plugin')
+const markdownConf = require('./markdown.conf.js')
 
 module.exports = {
   mode: 'production',
@@ -23,6 +24,16 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.md$/,
+        use: [
+          'vue-loader',
+          {
+            loader: 'vue-markdown-loader/lib/markdown-compiler',
+            options: markdownConf()
+          }
+        ],
+      },
+      {
         test: /\.vue$/,
         loader: 'vue-loader'
       },
@@ -34,7 +45,14 @@ module.exports = {
         }
       },
       {
-        test: /\.(le|c)ss$/,
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader'
+        ]
+      },
+      {
+        test: /\.less$/,
         use: [
           'vue-style-loader',
           'css-loader',
@@ -50,10 +68,9 @@ module.exports = {
           'postcss-loader',
           'sass-loader'
         ]
-      },
+      }
     ]
   },
-  externals: [nodeExternals()],
   resolve: {
     extensions: [ '.js', '.vue', '.json' ],
     alias: {

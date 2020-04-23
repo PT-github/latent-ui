@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-23 09:12:40
  * @LastEditors: PT
- * @LastEditTime: 2020-04-23 11:40:49
+ * @LastEditTime: 2020-04-23 12:12:14
  * @Description: 
  */
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
@@ -10,10 +10,10 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ProgressBarWebpackPlugin = require('progress-bar-webpack-plugin')
-const markdownConf = require('./markdown.conf.js');
+const markdownConf = require('./markdown.conf.js')
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   entry: path.join(__dirname, '../example/main.js'),
   output: {
     path: path.resolve(__dirname, '../dist'),
@@ -39,7 +39,6 @@ module.exports = {
             options: markdownConf()
           }
         ],
-        
       },
       {
         test: /\.vue$/,
@@ -97,8 +96,5 @@ module.exports = {
     new webpack.NamedModulesPlugin(),
     new ProgressBarWebpackPlugin(),
     new VueLoaderPlugin()
-  ],
-  optimization: {
-    minimize: false
-  }
+  ]
 }
