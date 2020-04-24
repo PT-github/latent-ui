@@ -1,4 +1,4 @@
-# elem-extension-ui
+# latent-ui
 基于elementUI的UI库
 
 # npm run build

@@ -2,15 +2,15 @@
  * @Author: PT
  * @Date: 2020-04-23 18:07:16
  * @LastEditors: PT
- * @LastEditTime: 2020-04-23 18:57:38
+ * @LastEditTime: 2020-04-24 11:31:19
  * @Description: 
  -->
 <template>
   <div class="layout">
     <div class="layout-header">
-      <div class="bt">Ele-UI文档</div>
+      <div class="bt">latent-ui文档</div>
       <div class="link">
-        <router-link :to="{ path: '/button' }" tag="a">指南</router-link><a href="https://github.com/PT-github/elem-extension-ui" target="_blank">github</a>
+        <router-link :to="{ path: '/button' }" tag="a">指南</router-link><a href="https://github.com/PT-github/latent-ui" target="_blank">github</a>
       </div>
     </div>
     <div class="layout-body">
