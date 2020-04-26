@@ -18,7 +18,7 @@
     data () {
       return {
 
-      };
+      }
     },
 
     components: {},
@@ -26,7 +26,7 @@
     computed: {},
 
 
-    mounted() {},
+    mounted () {},
 
     methods: {},
 

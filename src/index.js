@@ -11,12 +11,12 @@ import Tab from './tab/tab.vue'
 const components = [
   Button,
   Tab
-];
+]
 // 全局注入组件
 const install = function (Vue) {
   if (!Vue || install.installed) return
   components.forEach(component => {
-    Vue.component(component.name, component);
+    Vue.component(component.name, component)
   })
 }
 
@@ -30,4 +30,4 @@ if (typeof window != 'undefined' && window.Vue) {
 
 export default {
   install
-};
+}

@@ -1,20 +1,28 @@
 [
-  {
-    "label": "指南",
-    "name": "readme"
-  },
-  {
-    "label": "测试",
-    "name": "readme",
-    "children": [
-      {
-        "label": "按钮",
-        "name": "button"
-      },
-      {
-        "label": "指南2",
-        "name": "readme"
-      }
-    ]
-  }
+	{
+		"label": "指南",
+		"name": "readme"
+	},
+	{
+		"label": "Icon图标",
+		"name": "icon"
+	},
+	{
+		"label": "Button按钮",
+		"name": "button"
+	},
+	{
+		"label": "测试",
+		"name": "readme",
+		"children": [
+			{
+				"label": "按钮",
+				"name": "button"
+			},
+			{
+				"label": "指南2",
+				"name": "readme"
+			}
+		]
+	}
 ]

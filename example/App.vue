@@ -1,8 +1,8 @@
 <!--
  * @Author: PT
  * @Date: 2020-04-23 09:34:44
- * @LastEditors: PT
- * @LastEditTime: 2020-04-23 11:47:06
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-04-24 18:01:19
  * @Description: 
  -->
 <template>
@@ -11,21 +11,21 @@
 
 <script>
 export default {
-  name: "App",
-  data() {
-    return {};
+  name: 'App',
+  data () {
+    return {}
   },
 
   components: {},
 
   computed: {},
 
-  mounted() {},
+  mounted () {},
 
   methods: {},
 
   watch: {}
-};
+}
 </script>
 <style lang='less' scoped>
 </style>

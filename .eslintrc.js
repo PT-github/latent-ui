@@ -1,3 +1,10 @@
+/*
+ * @Author: PT
+ * @Date: 2020-04-20 20:30:52
+ * @LastEditors: PT
+ * @LastEditTime: 2020-04-26 10:11:51
+ * @Description: file content
+ */
 module.exports = {
 	"env": {
 		"browser": true,
@@ -21,5 +28,9 @@ module.exports = {
 		"vue"
 	],
 	"rules": {
+		// allow space-before-function-paren
+		"space-before-function-paren": ["error", "always"], // 函数[匿名函数]名 括号
+		"semi": ["error", "never"], // 无分号
+		"quotes": ["error", "single"] // 单引号
 	}
 };

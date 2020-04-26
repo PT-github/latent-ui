@@ -1,9 +1,9 @@
 /*
  * @Author: PT
  * @Date: 2020-04-21 09:28:26
- * @LastEditors: PT
- * @LastEditTime: 2020-04-21 11:40:47
- * @Description: 
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-04-24 17:58:01
+ * @Description:
  */
 import button from './button.vue'
 button.install = function (Vue) {

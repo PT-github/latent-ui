@@ -1,5 +1,23 @@
 @import url("../styles/_variable.scss");
-.button {
-  width: 100px;
-  color: $color2;
+.l-button {
+  .el-button--small,.el-button--mini {
+    .l-iconfont {
+      font-size: 12px;
+    }
+  }
+  .el-button--medium {
+    .l-iconfont {
+      font-size: 14px;
+    }
+  }
+}
+
+.l-button-popper {
+  min-width: 100px;
+  .l-button-more {
+    .l-button-more-item {
+      line-height: 30px;
+      cursor: pointer;
+    }
+  }
 }
