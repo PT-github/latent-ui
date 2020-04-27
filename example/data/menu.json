@@ -12,16 +12,24 @@
 		"name": "button"
 	},
 	{
-		"label": "测试",
-		"name": "readme",
+		"label": "Form表单",
+		"name": "form"
+	},
+	{
+		"label": "Table表格",
+		"name": "table",
 		"children": [
 			{
-				"label": "按钮",
-				"name": "button"
+				"label": "基本表格",
+				"name": "table"
 			},
 			{
-				"label": "指南2",
-				"name": "readme"
+				"label": "表格带查询",
+				"name": "query-table"
+			},
+			{
+				"label": "编辑表格",
+				"name": "edit-table"
 			}
 		]
 	}

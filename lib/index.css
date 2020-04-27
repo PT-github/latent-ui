@@ -1,3 +1,11 @@
+.tab {
+  width: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+
+
 .l-button .el-button--small .l-iconfont, .l-button .el-button--mini .l-iconfont {
       font-size: 12px;
     }
@@ -498,8 +506,5 @@
   content: "\e763";
 }
 
-.tab {
-  width: 200px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; }
+
+
