@@ -46,7 +46,6 @@
             },
             {
               label: "按钮4",
-              type: 'primary'
             },
             {
               label: "按钮5",

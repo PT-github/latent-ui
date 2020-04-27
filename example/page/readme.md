@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-23 18:32:14
  * @LastEditors: PT
- * @LastEditTime: 2020-04-26 17:27:55
+ * @LastEditTime: 2020-04-27 09:06:22
  * @Description: 指南
  -->
 # 安装
@@ -36,4 +36,5 @@ new Vue({
   render: h => h(App)
 });
 ```
+
 
