@@ -2,19 +2,19 @@
  * @Author: PT
  * @Date: 2020-04-21 12:03:15
  * @LastEditors: PT
- * @LastEditTime: 2020-04-27 09:54:35
+ * @LastEditTime: 2020-04-27 18:34:20
  * @Description: 
  */
-import LButton from './button'
+import Button from './button'
 // import eleTab from './tab'
-import LIcon from './icon'
-import LForm from './form'
+import Icon from './icon'
+import Form from './form'
 
 const components = [
-  LButton,
+  Button,
   // eleTab,
-  LIcon,
-  LForm
+  Icon,
+  Form
 ]
 
 const install = function (Vue) {
