@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-23 09:33:57
  * @LastEditors: PT
- * @LastEditTime: 2020-04-27 17:45:40
+ * @LastEditTime: 2020-04-27 19:12:40
  * @Description: 入口文件
  */
 import Vue from 'vue'
@@ -10,6 +10,7 @@ import App from './App.vue'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css' 
 import EleUi from '../lib'
+import '../lib/theme/base.css'
 import '../lib/theme/index.css'
 import 'highlight.js/styles/color-brewer.css'
 import './asset/style/index.less'

@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-23 18:07:16
  * @LastEditors: PT
- * @LastEditTime: 2020-04-24 11:31:19
+ * @LastEditTime: 2020-04-27 19:11:28
  * @Description: 
  -->
 <template>
@@ -10,11 +10,21 @@
     <div class="layout-header">
       <div class="bt">latent-ui文档</div>
       <div class="link">
-        <router-link :to="{ path: '/button' }" tag="a">指南</router-link><a href="https://github.com/PT-github/latent-ui" target="_blank">github</a>
+        <router-link
+          :to="{ path: '/button' }"
+          tag="a"
+        >
+          指南
+        </router-link><a
+          href="https://github.com/PT-github/latent-ui"
+          target="_blank"
+        >github</a>
       </div>
     </div>
     <div class="layout-body">
-      <div class="left"><Menu/></div>
+      <div class="left">
+        <Menu />
+      </div>
       <div class="right">
         <transition>
           <router-view></router-view>
@@ -25,11 +35,11 @@
 </template>
 
 <script>
-import Menu from "./Menu"
+import Menu from './Menu'
 export default {
-  name: "Layout",
-  data() {
-    return {};
+  name: 'Layout',
+  data () {
+    return {}
   },
 
   components: {
@@ -38,12 +48,12 @@ export default {
 
   computed: {},
 
-  mounted() {},
+  mounted () {},
 
   methods: {},
 
   watch: {}
-};
+}
 </script>
 <style lang='less' scoped>
 .layout {
