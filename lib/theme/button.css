@@ -4,10 +4,10 @@
   .l-button .el-button--medium .l-iconfont {
       font-size: 14px;
     }
-  .l-button-popper {
+  .el-popover.l-button-popper {
   min-width: 100px;
 }
-  .l-button-popper .l-button-more .l-button-more-item {
+  .el-popover.l-button-popper .l-button-more .l-button-more-item {
       line-height: 30px;
       cursor: pointer;
     }
