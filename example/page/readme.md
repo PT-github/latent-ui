@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-23 18:32:14
  * @LastEditors: PT
- * @LastEditTime: 2020-04-27 19:12:01
+ * @LastEditTime: 2020-04-28 09:10:46
  * @Description: 指南
  -->
 # 安装
@@ -60,10 +60,7 @@ npm install babel-plugin-component -D
       "component",
       {
         "libraryName": "latent-ui",
-        "styleLibrary": {
-          "name": "theme",
-          "base": false
-        }
+        "styleLibraryName": "theme"
       },
       "latent-ui"
     ]
