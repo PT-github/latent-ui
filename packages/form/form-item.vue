@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-27 09:40:55
  * @LastEditors: PT
- * @LastEditTime: 2020-04-28 11:53:00
+ * @LastEditTime: 2020-04-28 18:26:46
  * @Description: file content
  -->
 <template>
@@ -47,6 +47,29 @@
       v-else-if="item.type === 'select'"
       :value="value"
       :item="item"
+      :multiple="item.multiple"
+      :disabled="!!item.disabled"
+      :value-key="item.valueKey || 'value'"
+      :size="item.size"
+      :clearable="!!item.clearable"
+      :collapse-tags="!!item.collapseTags"
+      :multiple-limit="item.multipleLimit"
+      :name="item.name"
+      :autocomplete="item.autocomplete"
+      :placeholder="item.placeholder"
+      :filterable="item.filterable"
+      :allow-create="item.allowCreate"
+      :filter-method="item.filterMethod"
+      :remote="item.remote"
+      :loading="item.loading"
+      :loading-text="item.loadingText"
+      :no-match-text="item.noMatchText"
+      :no-data-text="item.noDataText"
+      :popper-class="item.popperClass"
+      :reserve-keyword="item.reserveKeyword"
+      :default-first-option="item.defaultFirstOption"
+      :popper-append-to-body="item.popperAppendToBody === false"
+      :automatic-dropdown="item.automaticDropdown"
       v-on="$listeners"
     ></l-form-item-select>
     <l-form-item-checkbox
@@ -71,11 +94,37 @@
       :fill="item.fill || '#409EFF'"
       v-on="$listeners"
     ></l-form-item-radio>
+    <l-form-item-time
+      v-else-if="item.type === 'time'"
+      :value="value"
+      :item="item"
+      :readonly="item.readonly"
+      :disabled="item.disabled"
+      :editable="item.editable === false"
+      :clearable="item.clearable"
+      :size="item.size"
+      :placeholder="item.placeholder"
+      :start-placeholder="item.startPlaceholder"
+      :end-placeholder="item.endPlaceholder"
+      :is-range="item.isRange"
+      :arrow-control="item.arrowControl"
+      :align="item.align"
+      :popper-class="item.popperClass"
+      :picker-options="item.pickerOptions"
+      :range-separator="item.rangeSeparator"
+      :value-format="item.valueFormat"
+      :default-value="item.defaultValue"
+      :name="item.name"
+      :prefix-icon="item.prefixIcon"
+      :clear-icon="item.clearIcon"
+      :model="$attrs.model"
+      v-on="$listeners"
+    ></l-form-item-time>
   </span>
 </template>
 
 <script>
-import { LFormItemText, LFormItemInput, LFormItemSelect, LFormItemCheckbox, LFormItemRadio } from './components'
+import { LFormItemText, LFormItemInput, LFormItemSelect, LFormItemCheckbox, LFormItemRadio, LFormItemTime } from './components'
 export default {
   name: 'LFormItem',
   props: {
@@ -97,7 +146,8 @@ export default {
     LFormItemInput,
     LFormItemSelect,
     LFormItemCheckbox,
-    LFormItemRadio
+    LFormItemRadio,
+    LFormItemTime,
   },
 
   computed: {},

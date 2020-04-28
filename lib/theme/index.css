@@ -1,16 +1,3 @@
-.l-button .el-button--small .l-iconfont, .l-button .el-button--mini .l-iconfont {
-      font-size: 12px;
-    }
-  .l-button .el-button--medium .l-iconfont {
-      font-size: 14px;
-    }
-  .el-popover.l-button-popper {
-  min-width: 100px;
-}
-  .el-popover.l-button-popper .l-button-more .l-button-more-item {
-      line-height: 30px;
-      cursor: pointer;
-    }
 
 @font-face {
   font-family: "l-iconfont";
@@ -498,6 +485,20 @@
   content: "\e763";
 }
 
+
+.l-button .el-button--small .l-iconfont, .l-button .el-button--mini .l-iconfont {
+      font-size: 12px;
+    }
+  .l-button .el-button--medium .l-iconfont {
+      font-size: 14px;
+    }
+  .el-popover.l-button-popper {
+  min-width: 100px;
+}
+  .el-popover.l-button-popper .l-button-more .l-button-more-item {
+      line-height: 30px;
+      cursor: pointer;
+    }
 
 
 

@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-27 09:45:31
  * @LastEditors: PT
- * @LastEditTime: 2020-04-28 11:52:01
+ * @LastEditTime: 2020-04-28 17:27:41
  * @Description: file content
  -->
 
@@ -43,6 +43,7 @@
           {
             label: "input类型",
             prop: "inputname",
+            clearable: true,
             type: 'input'
           },
           {
@@ -90,6 +91,7 @@
             label: "select类型（下拉带分组）",
             prop: "option2",
             type: 'select',
+            clearable: true,
             isGroup: true,
             options: [
               {
@@ -139,7 +141,7 @@
             type: 'checkbox',
             valueFormat: 'string',
             disabled: false,
-            size: 'medium',
+            size: '',
             min: 1,
             max: 3,
             options: [
@@ -178,6 +180,18 @@
                 value: '02'
               }
             ]
+          },
+          {
+            label: "time类型",
+            prop: "timename",
+            type: 'time'
+          },
+          {
+            label: "time[picker]类型",
+            prop: "timename1",
+            type: 'time',
+            subType: 'picker',
+            isRange: true
           },
         ],
       };
