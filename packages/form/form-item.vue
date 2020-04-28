@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-27 09:40:55
  * @LastEditors: PT
- * @LastEditTime: 2020-04-27 12:08:03
+ * @LastEditTime: 2020-04-28 11:53:00
  * @Description: file content
  -->
 <template>
@@ -49,11 +49,33 @@
       :item="item"
       v-on="$listeners"
     ></l-form-item-select>
+    <l-form-item-checkbox
+      v-else-if="item.type === 'checkbox'"
+      :value="value"
+      :item="item"
+      :size="item.size"
+      :disabled="!!item.disabled"
+      :min="item.min"
+      :max="item.max"
+      :text-color="item.textColor || '#FFFFFF'"
+      :fill="item.fill || '#409EFF'"
+      v-on="$listeners"
+    ></l-form-item-checkbox>
+    <l-form-item-radio
+      v-else-if="item.type === 'radio'"
+      :value="value"
+      :item="item"
+      :size="item.size"
+      :disabled="!!item.disabled"
+      :text-color="item.textColor || '#FFFFFF'"
+      :fill="item.fill || '#409EFF'"
+      v-on="$listeners"
+    ></l-form-item-radio>
   </span>
 </template>
 
 <script>
-import { LFormItemText, LFormItemInput, LFormItemSelect } from './components'
+import { LFormItemText, LFormItemInput, LFormItemSelect, LFormItemCheckbox, LFormItemRadio } from './components'
 export default {
   name: 'LFormItem',
   props: {
@@ -73,7 +95,9 @@ export default {
   components: {
     LFormItemText,
     LFormItemInput,
-    LFormItemSelect
+    LFormItemSelect,
+    LFormItemCheckbox,
+    LFormItemRadio
   },
 
   computed: {},

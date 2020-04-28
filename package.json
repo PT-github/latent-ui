@@ -4,7 +4,7 @@
   "description": "基于elementUI的UI库",
   "main": "lib/index.js",
   "scripts": {
-    "build": "rm -rf lib && rm -rf docs && rollup -c ./build/rollup.config.js && npm run build:doc",
+    "build": "rollup -c ./build/rollup.config.js && npm run build:doc",
     "build:lib": "rollup -c ./build/rollup.config.js",
     "watch": "rollup -c ./build/rollup.config.js -w",
     "build:doc": "webpack --config ./build/webpack.docs.config.js --progress",

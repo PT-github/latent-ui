@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-27 09:45:31
  * @LastEditors: PT
- * @LastEditTime: 2020-04-27 12:17:46
+ * @LastEditTime: 2020-04-28 11:52:01
  * @Description: file content
  -->
 
@@ -16,35 +16,49 @@
 
 ```html
 <template>
-  <l-form :fields="fields" v-model="form">
-    <!-- <template #username>
-      <span >AAAA</span>
-    </template> -->
-    
-  </l-form>
+  <span>
+    <l-form :fields="fields" v-model="form"></l-form>
+  form数据：{{ JSON.stringify(form) }}
+  </span>
 </template>
 <script>
   export default {
     data() {
       return {
         form: {
-          name: "x湖南xxx活动",
-          topic: "自由活动",
-          option: ""
+          textname: "x湖南xxx活动",
+          inputname: "自由活动",
+          inputname1: "",
+          inputname2: "",
+          option: "",
+          option2: "",
+          checkname: []
         },
         fields: [
           {
-            label: "活动名称",
-            prop: "name",
+            label: "text类型",
+            prop: "textname",
             type: 'text'
           },
           {
-            label: "活动主题",
-            prop: "topic",
+            label: "input类型",
+            prop: "inputname",
             type: 'input'
           },
           {
-            label: "活动选项",
+            label: "input[password]类型",
+            prop: "inputname1",
+            type: 'input',
+            eType: 'password'
+          },
+          {
+            label: "input[textarea]类型",
+            prop: "inputname2",
+            type: 'input',
+            eType: 'textarea'
+          },
+          {
+            label: "select类型",
             prop: "option",
             type: 'select',
             isGroup: false,
@@ -71,6 +85,99 @@
             attrProps: {
               label: 'name'
             }
+          },
+          {
+            label: "select类型（下拉带分组）",
+            prop: "option2",
+            type: 'select',
+            isGroup: true,
+            options: [
+              {
+                name: '选项一',
+                value: '01',
+                options: [
+                  {
+                    name: 'A方案',
+                    value: '01-01'
+                  },
+                  {
+                    name: 'B方案',
+                    value: '01-02'
+                  }
+                ]
+              },
+              {
+                name: '选项二',
+                value: '02'
+              }
+            ],
+            attrProps: {
+              label: 'name'
+            }
+          },
+          {
+            label: "checkbox类型",
+            prop: "checkname",
+            type: 'checkbox',
+            options: [
+              {
+                name: '选项一',
+                value: '01'
+              },
+              {
+                name: '选项二',
+                value: '02'
+              }
+            ],
+            attrProps: {
+              label: 'name'
+            }
+          },
+          {
+            label: "checkbox类型(值为string类型)",
+            prop: "checkname1",
+            type: 'checkbox',
+            valueFormat: 'string',
+            disabled: false,
+            size: 'medium',
+            min: 1,
+            max: 3,
+            options: [
+              {
+                name: '选项一',
+                value: '01'
+              },
+              {
+                name: '选项二',
+                value: '02'
+              },
+              {
+                name: '选项三',
+                value: '03'
+              },
+              {
+                name: '选项四',
+                value: '04'
+              }
+            ],
+            attrProps: {
+              label: 'name'
+            }
+          },
+          {
+            label: "radio类型",
+            prop: "radioname",
+            type: 'radio',
+            options: [
+              {
+                label: '选项一',
+                value: '01'
+              },
+              {
+                label: '选项二',
+                value: '02'
+              }
+            ]
           },
         ],
       };

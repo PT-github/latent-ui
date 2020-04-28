@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-27 11:34:17
  * @LastEditors: PT
- * @LastEditTime: 2020-04-27 12:17:31
+ * @LastEditTime: 2020-04-28 10:28:40
  * @Description: file content
  -->
 <template>
@@ -77,8 +77,8 @@ export default {
       return obj
     },
     options () {
-      let keys = this.attrProps
-      if (this.item && this.item.options && this.item.options.length > 0) {
+      let optionKeys = this.attrProps.options
+      if (this.item && this.item[optionKeys] && this.item[optionKeys].length > 0) {
         return this.item.options
       }
       return []
