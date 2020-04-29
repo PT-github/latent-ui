@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-23 09:33:57
  * @LastEditors: PT
- * @LastEditTime: 2020-04-27 19:12:40
+ * @LastEditTime: 2020-04-29 10:15:54
  * @Description: 入口文件
  */
 import Vue from 'vue'
@@ -20,8 +20,6 @@ Vue.use(EleUi)
 Vue.use(ElementUI)
 Vue.component('demo-code', DemoBlock)
 
-
-console.log(router)
 new Vue({
   el: '#app',
   router,

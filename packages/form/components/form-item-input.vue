@@ -2,11 +2,11 @@
  * @Author: PT
  * @Date: 2020-04-27 10:59:38
  * @LastEditors: PT
- * @LastEditTime: 2020-04-27 12:07:19
+ * @LastEditTime: 2020-04-29 10:26:11
  * @Description: file content
  -->
 <template>
-  <el-input class="l-form-item-input" :value="value" v-bind="$attrs" @input="handleInput"></el-input>
+  <el-input class="l-form-item-input" :value="value" v-bind="$attrs" @input="handleInput" @change="handleChange"></el-input>
 </template>
 
 <script>
@@ -16,6 +16,9 @@ export default {
   methods: {
     handleInput (v) {
       this.$emit('input', v, this.item)
+    },
+    handleChange (v) {
+      this.item.handle && typeof this.item.handle && this.item.handle(v, this.item)
     }
   }
 }

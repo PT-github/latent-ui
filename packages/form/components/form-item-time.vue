@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-27 10:59:38
  * @LastEditors: PT
- * @LastEditTime: 2020-04-29 10:05:28
+ * @LastEditTime: 2020-04-29 10:22:48
  * @Description: file content
  -->
 <template>
@@ -11,6 +11,7 @@
     class="l-form-item-timepicker"
     v-model="currentValue"
     v-bind="$attrs"
+    @change="handleChange"
   >
   </el-time-picker>
   <el-time-select
@@ -18,6 +19,7 @@
     class="l-form-item-timeselect"
     v-model="currentValue"
     v-bind="$attrs"
+    @change="handleChange"
   >
   </el-time-select>
 </template>
@@ -82,7 +84,11 @@ export default {
       }
     }
   },
-  methods: {}
+  methods: {
+    handleChange (v) {
+      this.item.handle && typeof this.item.handle && this.item.handle(v, this.item)
+    }
+  }
 }
 </script>
 <style lang='less' scoped>

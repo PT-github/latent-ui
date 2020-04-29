@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-27 09:45:31
  * @LastEditors: PT
- * @LastEditTime: 2020-04-29 10:07:29
+ * @LastEditTime: 2020-04-29 10:31:48
  * @Description: file content
  -->
 
@@ -46,7 +46,10 @@
             label: "input类型",
             prop: "inputname",
             clearable: true,
-            type: 'input'
+            type: 'input',
+            handle: (v, item) => {
+              console.log('handle', v, item)
+            }
           },
           {
             label: "input[password]类型",
@@ -87,6 +90,9 @@
             ],
             attrProps: {
               label: 'name'
+            },
+            handle: (v, item) => {
+              console.log('handle', v, item)
             }
           },
           {
@@ -135,6 +141,9 @@
             ],
             attrProps: {
               label: 'name'
+            },
+            handle: (v, item) => {
+              console.log('handle', v, item)
             }
           },
           {
@@ -181,7 +190,10 @@
                 label: '选项二',
                 value: '02'
               }
-            ]
+            ],
+            handle: (v, item) => {
+              console.log('handle', v, item)
+            }
           },
           {
             label: "time类型",
@@ -207,7 +219,10 @@
             type: 'time',
             subType: 'picker',
             isRange: true,
-            keySets: [ 'startTime', 'endTime' ]
+            keySets: [ 'startTime', 'endTime' ],
+            handle: (v, item) => {
+              console.log('handle', v, item)
+            }
           },
         ],
       };
