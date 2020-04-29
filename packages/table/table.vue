@@ -2,7 +2,7 @@
  * @Author: fenzhou
  * @Date: 2020-04-28 10:34:29
  * @LastEditors: fenzhou
- * @LastEditTime: 2020-04-29 08:36:50
+ * @LastEditTime: 2020-04-29 11:27:16
  * @Description: 
  -->
 <template>
@@ -218,10 +218,16 @@ export default {
           ...filters
         }
       );
-      console.log('this.data type:', )
       if (this.data instanceof Object) {
-          
-        this.localDataSource = this.data;
+        let d = this.data
+        this.localDataSource = d.data;
+        this.localPagination = Object.assign({}, this.localPagination, {
+          current: d.pageNo, // 返回结果中的当前分页数
+          total: d.total, // 返回结果中的总记录数
+          showSizeChanger: this.showSizeChanger,
+          pageSize:
+            (pagination && pagination.pageSize) || this.localPagination.pageSize
+        });
         return;
       }
       const result = this.data(parameter);

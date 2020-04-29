@@ -2,7 +2,7 @@
  * @Author: fenzhou
  * @Date: 2020-04-28 15:56:46
  * @LastEditors: fenzhou
- * @LastEditTime: 2020-04-28 17:29:31
+ * @LastEditTime: 2020-04-29 09:41:30
  * @Description: 
  -->
 #### Table 组件
@@ -21,9 +21,13 @@
   export default {
     data() {
       return {
-        loadData:[{
-            name: 'bella'
-        }],
+        loadData:{
+          pageNo: 1,
+          total: 10,
+          data:[{
+              name: 'bella'
+          }]
+        },
         columns: [{
             label: '姓名',
             value: 'name',
