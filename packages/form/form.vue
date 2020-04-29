@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-27 09:15:37
  * @LastEditors: PT
- * @LastEditTime: 2020-04-27 12:08:28
+ * @LastEditTime: 2020-04-28 17:31:54
  * @Description: file content
  -->
 <template>
@@ -33,7 +33,7 @@
 					<slot :name="item.prop"></slot>
 				</template>
 				<template #default>
-					<LFormItem :item="item" :value="value[item.prop]" @input="handleInput"></LFormItem>
+					<LFormItem :item="item" :model="value" :value="value[item.prop]" @input="handleInput"></LFormItem>
 				</template>
 			</el-form-item>
     </el-form>
@@ -79,6 +79,7 @@ export default {
     handleInput (v, item) {
       // console.log('监听子组件中的数据回填input事件', v, item)
       // if (item.type === 'input') {
+        console.log(v, item, 'form')
         this.$emit('input', Object.assign({}, this.value, {
           [item.prop]: v
         }))
