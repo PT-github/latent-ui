@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-27 09:45:31
  * @LastEditors: PT
- * @LastEditTime: 2020-04-29 10:31:48
+ * @LastEditTime: 2020-04-29 16:32:09
  * @Description: file content
  -->
 
@@ -28,19 +28,31 @@
         form: {
           textname: "x湖南xxx活动",
           inputname: "自由活动",
+          numbername: "-1",
           inputname1: "",
           inputname2: "",
           option: "",
           option2: "",
           checkname: [],
-          startTime: '0:0:0',
-          endTime: '10:10:10'
+          // startTime: '0:0:0',
+          // endTime: '10:10:10',
+          // startTime1: '00:00:00',
+          // endTime1: '10:10:10',
         },
         fields: [
           {
             label: "text类型",
             prop: "textname",
             type: 'text'
+          },
+          {
+            label: "number类型",
+            prop: "numbername",
+            type: 'number',
+            controls: false,
+            handle(v) {
+              console.log('handle', v)
+            }
           },
           {
             label: "input类型",
@@ -67,25 +79,20 @@
             label: "select类型",
             prop: "option",
             type: 'select',
+            multiple: true,
             isGroup: false,
             options: [
               {
                 name: '选项一',
-                value: '01',
-                options: [
-                  {
-                    name: 'A方案',
-                    value: '01-01'
-                  },
-                  {
-                    name: 'B方案',
-                    value: '01-02'
-                  }
-                ]
+                value: '01'
               },
               {
                 name: '选项二',
                 value: '02'
+              },
+              {
+                name: '选项三',
+                value: '03'
               }
             ],
             attrProps: {
@@ -212,7 +219,7 @@
             type: 'time',
             subType: 'picker',
             isRange: true
-          },,
+          },
           {
             label: "time[picker]类型(isRange为true)",
             prop: "timename3",
@@ -220,6 +227,35 @@
             subType: 'picker',
             isRange: true,
             keySets: [ 'startTime', 'endTime' ],
+            handle: (v, item) => {
+              console.log('handle', v, item)
+            }
+          },
+          {
+            label: "date类型",
+            prop: "datename",
+            type: 'date',
+            subType: 'date', // year/month/date/dates/week
+            handle: (v, item) => {
+              console.log('handle', v, item)
+            }
+          },
+          {
+            label: "date[range]类型",
+            prop: "datename1",
+            type: 'date',
+            subType: 'daterange',
+            keySets: [ 'startTime1', 'endTime1' ],
+            handle: (v, item) => {
+              console.log('handle', v, item)
+            }
+          },
+          {
+            label: "date[range]类型",
+            prop: "datename2",
+            type: 'date',
+            subType: 'datetimerange',
+            keySets: [ 'startTime2', 'endTime2' ],
             handle: (v, item) => {
               console.log('handle', v, item)
             }

@@ -2,23 +2,31 @@
  * @Author: PT
  * @Date: 2020-04-27 10:59:38
  * @LastEditors: PT
- * @LastEditTime: 2020-04-29 10:26:11
+ * @LastEditTime: 2020-04-29 15:58:37
  * @Description: file content
  -->
 <template>
-  <el-input class="l-form-item-input" :value="value" v-bind="$attrs" @input="handleInput" @change="handleChange"></el-input>
+  <el-input
+    class="l-form-item-input"
+    :value="value"
+    v-bind="$attrs"
+    @input="handleInput"
+    @change="handleChange"
+  ></el-input>
 </template>
 
 <script>
 export default {
   name: 'LFormItemInput',
-  props: [ 'value', 'item' ],
+  props: ['value', 'item'],
   methods: {
     handleInput (v) {
       this.$emit('input', v, this.item)
     },
     handleChange (v) {
-      this.item.handle && typeof this.item.handle && this.item.handle(v, this.item)
+      this.item.handle &&
+        typeof this.item.handle &&
+        this.item.handle(v, this.item)
     }
   }
 }

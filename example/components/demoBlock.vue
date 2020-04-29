@@ -2,17 +2,24 @@
   <div class="demo-block">
     <div class="demo-block-source">
       <slot name="source"></slot>
-      <span class="demo-block-code-icon" v-if="!$slots.default" @click="showCode=!showCode">
-        <img
-          alt="expand code"
-          src="https://gw.alipayobjects.com/zos/rmsportal/wSAkBuJFbdxsosKKpqyq.svg"
-          class="code-expand-icon-show"
-        />
+      <span
+        class="demo-block-code-icon"
+        v-if="!$slots.default"
+        @click="showCode=!showCode"
+      >
+        <i class="l-iconfont" :class="{ iconxia: !showCode, iconshang: showCode }"></i>{{ showCode ? '收起' : '展开' }}
       </span>
     </div>
-    <div class="demo-block-meta" v-if="$slots.default">
+    <div
+      class="demo-block-meta"
+      v-if="$slots.default"
+    >
       <slot></slot>
-      <span v-if="$slots.default" class="demo-block-code-icon" @click="showCode=!showCode">
+      <span
+        v-if="$slots.default"
+        class="demo-block-code-icon"
+        @click="showCode=!showCode"
+      >
         <img
           alt="expand code"
           src="https://gw.alipayobjects.com/zos/rmsportal/wSAkBuJFbdxsosKKpqyq.svg"
@@ -20,19 +27,22 @@
         />
       </span>
     </div>
-    <div class="demo-block-code" v-show="showCode">
+    <div
+      class="demo-block-code"
+      v-show="showCode"
+    >
       <slot name="highlight"></slot>
     </div>
   </div>
 </template>
 <script>
 export default {
-  data() {
+  data () {
     return {
       showCode: false
-    };
+    }
   }
-};
+}
 </script>
 <style>
 .demo-block {
@@ -56,10 +66,13 @@ export default {
   right: 24px;
   bottom: 10px;
   cursor: pointer;
-  width: 18px;
+  width: 50px;
   height: 18px;
   line-height: 18px;
   text-align: center;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
 }
 .demo-block .demo-block-code-icon img {
   -webkit-transition: all 0.4s;
