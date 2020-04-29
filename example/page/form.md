@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-27 09:45:31
  * @LastEditors: PT
- * @LastEditTime: 2020-04-28 17:27:41
+ * @LastEditTime: 2020-04-29 10:07:29
  * @Description: file content
  -->
 
@@ -32,7 +32,9 @@
           inputname2: "",
           option: "",
           option2: "",
-          checkname: []
+          checkname: [],
+          startTime: '0:0:0',
+          endTime: '10:10:10'
         },
         fields: [
           {
@@ -190,8 +192,22 @@
             label: "time[picker]类型",
             prop: "timename1",
             type: 'time',
+            subType: 'picker'
+          },
+          {
+            label: "time[picker]类型(isRange为true)",
+            prop: "timename2",
+            type: 'time',
             subType: 'picker',
             isRange: true
+          },,
+          {
+            label: "time[picker]类型(isRange为true)",
+            prop: "timename3",
+            type: 'time',
+            subType: 'picker',
+            isRange: true,
+            keySets: [ 'startTime', 'endTime' ]
           },
         ],
       };
