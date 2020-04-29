@@ -7,7 +7,7 @@
  -->
 <template>
   <el-time-picker
-    v-if="item.subType === 'picker'"
+    v-if="item.eType === 'picker'"
     class="l-form-item-timepicker"
     v-model="currentValue"
     v-bind="$attrs"
@@ -43,7 +43,7 @@ export default {
       type: Object,
       default: () => {
         return {
-          subType: 'select',
+          eType: 'select',
           isRange: false
         }
       }
@@ -51,7 +51,7 @@ export default {
   },
   computed: {
     isRange () {
-      return this.item.subType === 'picker' && this.item.isRange
+      return this.item.eType === 'picker' && this.item.isRange
     },
     currentValue: {
       get () {

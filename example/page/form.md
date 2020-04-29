@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-27 09:45:31
  * @LastEditors: PT
- * @LastEditTime: 2020-04-29 16:32:09
+ * @LastEditTime: 2020-04-29 17:48:55
  * @Description: file content
  -->
 
@@ -49,10 +49,18 @@
             label: "number类型",
             prop: "numbername",
             type: 'number',
-            controls: false,
             handle(v) {
               console.log('handle', v)
             }
+          },
+          {
+            type: 'number',
+            label: '数量',
+            prop: 'count',
+            min: 0,
+            max: 150,
+            step: 5,
+            stepStrictly: true
           },
           {
             label: "input类型",
@@ -68,6 +76,14 @@
             prop: "inputname1",
             type: 'input',
             eType: 'password'
+          },
+          {
+            type: 'input',
+            eType: 'password',
+            label: '密码',
+            prop: 'password',
+            clearable: true,
+            showPassword: true
           },
           {
             label: "input[textarea]类型",
@@ -211,20 +227,20 @@
             label: "time[picker]类型",
             prop: "timename1",
             type: 'time',
-            subType: 'picker'
+            eType: 'picker'
           },
           {
             label: "time[picker]类型(isRange为true)",
             prop: "timename2",
             type: 'time',
-            subType: 'picker',
+            eType: 'picker',
             isRange: true
           },
           {
             label: "time[picker]类型(isRange为true)",
             prop: "timename3",
             type: 'time',
-            subType: 'picker',
+            eType: 'picker',
             isRange: true,
             keySets: [ 'startTime', 'endTime' ],
             handle: (v, item) => {
@@ -235,7 +251,7 @@
             label: "date类型",
             prop: "datename",
             type: 'date',
-            subType: 'date', // year/month/date/dates/week
+            eType: 'date', // year/month/date/dates/week
             handle: (v, item) => {
               console.log('handle', v, item)
             }
@@ -244,7 +260,7 @@
             label: "date[range]类型",
             prop: "datename1",
             type: 'date',
-            subType: 'daterange',
+            eType: 'daterange',
             keySets: [ 'startTime1', 'endTime1' ],
             handle: (v, item) => {
               console.log('handle', v, item)
@@ -254,7 +270,7 @@
             label: "date[range]类型",
             prop: "datename2",
             type: 'date',
-            subType: 'datetimerange',
+            eType: 'datetimerange',
             keySets: [ 'startTime2', 'endTime2' ],
             handle: (v, item) => {
               console.log('handle', v, item)
@@ -277,16 +293,117 @@
 
 **属性**
 
-| 参数      |                  说明                   |    类型 |   默认值 |
-| --------- | :-------------------------------------: | ------: | -------: |
-| size      |                按钮大小                 |  String |    small |
-| list      |              按钮数据列表               |   Array |
-| isFold    |              是否显示更多               | Boolean |     true |
-| visible   |     isFold 为 true 时，默认显示个数     |  Number |        5 |
-| attrProps |         配置选项（具体看下表）          |  object |
-| moreTitle | isFold 为 true 时，更多操作按钮显示名称 |  String | 更多操作 |
+| 参数          |                  说明                   |    类型 |   默认值   |
+| ------------ | :-------------------------------------: | ------: | -------: |
+| fields       |           form内组件配置（详见下表）        |  array |     -     |
+| value/v-model|                   绑定值                 |   object |          |
 
-**attrProps**
-| 参数 | 说明 | 类型 | 默认值 |
-| --------- | :------: | -----: | -----: |
-|name|按钮显示名称|String|-|-|
+**fields**
+
+|  参数 |    说明    |  类型 | 可选值 | 默认值 | 是否必传项 |
+| ---- | :--------: | -----: | -----: | -----: | -----: |
+| type |显示组件的类型|string | text/input/number/select/checkbox/radio/time/date |-|是|
+<br/><br/><br/>
+
+## fileds中组件可以配置element-ui的对应组件列出的所有配置，如遇到有中划线连接的字段，则采用驼峰式传入（个别字段被使用时用e前缀来区分[例如input中type使用eType来传递]）
+例如：
+```html
+inputNumber配置:
+{
+  type: 'number',
+  label: '数量',
+  prop: 'count',
+  min: 0,
+  max: 150,
+  step: 5,
+  stepStrictly: true
+}
+input配置:
+{
+  type: 'input',
+  eType: 'password'
+  label: '名称',
+  prop: 'name',
+  clearable: true,
+  showPassword: true // show-password改为驼峰式传入组件
+}
+```
+
+**fileds中组件type为text**
+| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必传项 |
+| --------- | :------: | :-----: | :-----: | :-----: | -----: |
+|label|标签文本|string|-|-|-|
+|prop|表单域model字段|-|-|-|-|
+<br/><br/><br/>
+
+**fileds中组件type为number**
+| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必传项 |
+| --------- | :------: | :-----: | :-----: | :-----: | -----: |
+|label|同text|-|-|-|-|
+|prop|同text|-|-|-|-|
+|handle|数据发生改变时回调函数|function|-|-|-|
+|其他参数，参考element-ui文档(如遇到有中划线连接的字段，则采用驼峰式传入)|
+<br/><br/><br/>
+
+**fileds中组件type为input**
+| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必传项 |
+| --------- | :------: | :-----: | :-----: | :-----: | -----: |
+|label|同text|-|-|-|-|
+|prop|同text|-|-|-|-|
+|eType|input显示类型|string|input/textarea/password等和其他原声input的type值|-|-|
+|handle|数据发生改变时回调函数|function|-|-|-|
+|其他参数，参考element-ui文档(如遇到有中划线连接的字段，则采用驼峰式传入)|
+<br/><br/><br/>
+
+**fileds中组件type为select**
+| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必传项 |
+| --------- | :------: | :-----: | :-----: | :-----: | -----: |
+|label|同text|-|-|-|-|
+|prop|同text|-|-|-|-|
+|isGroup|下拉选项是否分组|boolean|-|false|-|
+|attrProps|字段配置选项|object|-|-|-|
+|attrProps.label|选项标签对应字段|string|-|-|-|
+|attrProps.value|选项值对应字段|string|-|-|-|
+|attrProps.options|选项列表对应字段|string|-|-|-|
+|handle|数据发生改变时回调函数|function|-|-|-|
+|其他参数，参考element-ui文档(如遇到有中划线连接的字段，则采用驼峰式传入)|
+<br/><br/><br/>
+
+
+**fileds中组件type为checkbox/radio**
+| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必传项 |
+| --------- | :------: | :-----: | :-----: | :-----: | -----: |
+|label|同text|-|-|-|-|
+|prop|同text|-|-|-|-|
+|valueFormat|勾选值类型[针对checkbox]|string|string/array|array|-|
+|attrProps|字段配置选项|object|-|-|-|
+|attrProps.label|选项标签对应字段|string|-|-|-|
+|attrProps.value|选项值对应字段|string|-|-|-|
+|attrProps.options|选项列表对应字段|string|-|-|-|
+|handle|数据发生改变时回调函数|function|-|-|-|
+|其他参数，参考element-ui文档(如遇到有中划线连接的字段，则采用驼峰式传入)|
+<br/><br/><br/>
+
+**fileds中组件type为time**
+| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必传项 |
+| --------- | :------: | :-----: | :-----: | :-----: | -----: |
+|label|同text|-|-|-|-|
+|prop|同text|-|-|-|-|
+|eType|组件显示类型|string|picker/select|select|-|
+|isRange|是否为时间范围选择|boolean|-|false|-|
+|keySets|当isRange为true时，设置起始时间和结束时间对应表单数据中的字段|array|-|-|-|
+|handle|数据发生改变时回调函数|function|-|-|-|
+|其他参数，参考element-ui文档(如遇到有中划线连接的字段，则采用驼峰式传入)|
+<br/><br/><br/>
+
+**fileds中组件type为date**
+| 参数 | 说明 | 类型 | 可选值 | 默认值 | 是否必传项 |
+| --------- | :------: | :-----: | :-----: | :-----: | -----: |
+|label|同text|-|-|-|-|
+|prop|同text|-|-|-|-|
+|eType|组件显示类型|year/month/date/dates/ week/datetime/datetimerange/ daterange/monthrange	|date|-|
+|keySets|当设置为时间范围时，设置起始时间和结束时间对应表单数据中的字段|array|-|-|-|
+|handle|数据发生改变时回调函数|function|-|-|-|
+|其他参数，参考element-ui文档(如遇到有中划线连接的字段，则采用驼峰式传入)|
+<br/><br/><br/>
+

@@ -10,7 +10,7 @@
   <el-date-picker
     class="l-form-item-date"
     v-model="currentValue"
-    :type="item.subType"
+    :type="item.eType"
     :format="format"
     :value-format="valueFormat"
     v-bind="$attrs"
@@ -38,7 +38,7 @@ export default {
       type: Object,
       default: () => {
         return {
-          subType: 'date'
+          eType: 'date'
         }
       }
     }
@@ -59,7 +59,7 @@ export default {
       return formatStr
     },
     isRange () {
-      return /.range$/.test(this.item.subType)
+      return /.range$/.test(this.item.eType)
     },
     currentValue: {
       get () {
@@ -96,7 +96,7 @@ export default {
     getFormat () {
       let formatStr = ''
       // year/month/date/dates/week/datetime/datetimerange/daterange/monthrange
-      switch (this.item.subType) {
+      switch (this.item.eType) {
         case 'year':
           formatStr = 'yyyy'
           break
