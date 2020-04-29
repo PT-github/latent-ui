@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-27 09:40:55
  * @LastEditors: PT
- * @LastEditTime: 2020-04-28 18:26:46
+ * @LastEditTime: 2020-04-29 09:50:04
  * @Description: file content
  -->
 <template>
@@ -112,7 +112,7 @@
       :popper-class="item.popperClass"
       :picker-options="item.pickerOptions"
       :range-separator="item.rangeSeparator"
-      :value-format="item.valueFormat"
+      :value-format="item.valueFormat || 'HH:mm:ss'"
       :default-value="item.defaultValue"
       :name="item.name"
       :prefix-icon="item.prefixIcon"
