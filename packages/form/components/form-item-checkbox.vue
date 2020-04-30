@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-28 10:38:14
  * @LastEditors: PT
- * @LastEditTime: 2020-04-28 11:46:12
+ * @LastEditTime: 2020-04-29 10:30:42
  * @Description: file content
  -->
 <template>
@@ -83,6 +83,7 @@ export default {
   methods: {
     handleInput (v) {
       this.$emit('input', v, this.item)
+      this.item.handle && typeof this.item.handle && this.item.handle(v, this.item)
     }
   },
 

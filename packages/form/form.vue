@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-27 09:15:37
  * @LastEditors: PT
- * @LastEditTime: 2020-04-28 17:31:54
+ * @LastEditTime: 2020-04-30 11:04:18
  * @Description: file content
  -->
 <template>
@@ -15,6 +15,8 @@
       :model="value"
       v-bind="$attrs"
       v-on="$listeners"
+      :class="{ 'l-form--inline-group' : $attrs.inline }"
+      :style="{ 'grid-template-columns': gridColumnWidth }"
     >
       <el-form-item
         v-for="(item, index) in visibleFields"
@@ -56,7 +58,12 @@ export default {
 			default: () => {
 				return {}
 			}
-		}
+    },
+    // 一行显示formitem数目
+    inlineNumber: {
+      type: Number,
+      default: 3
+    }
   },
   data () {
     return {}
@@ -67,8 +74,15 @@ export default {
 	},
 
   computed: {
+    // 过滤后的fields配置
     visibleFields () {
       return this.fields.filter(item => item.show !== false)
+    },
+    gridColumnWidth () {
+      if (this.$attrs.inline && this.inlineNumber) {
+        return `repeat(${this.inlineNumber}, ${ 100 / this.inlineNumber }%)`
+      }
+      return 'none'
     }
   },
 
@@ -92,5 +106,29 @@ export default {
 </script>
 <style lang='less' scoped>
 .l-form {
+  .l-form--inline-group {
+    display: grid;
+  }
+}
+</style>
+<style lang="less">
+.l-form {
+  .el-form--inline {
+    .el-form-item {
+      display: flex;
+      .el-form-item__content {
+        flex: 1;
+        .l-form-item {
+          display: block;
+          .l-form-item-number, .el-select, .el-date-editor {
+            width: 100%;
+          }
+          .el-radio-group {
+            line-height: 40px;
+          }
+        }
+      }
+    }
+  }
 }
 </style>

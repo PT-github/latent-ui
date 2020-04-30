@@ -1,32 +1,27 @@
 <!--
  * @Author: PT
- * @Date: 2020-04-27 10:59:38
+ * @Date: 2020-04-29 10:36:02
  * @LastEditors: PT
- * @LastEditTime: 2020-04-29 10:22:48
+ * @LastEditTime: 2020-04-29 15:41:40
  * @Description: file content
  -->
+
 <template>
-  <el-time-picker
-    v-if="item.eType === 'picker'"
-    class="l-form-item-timepicker"
+  <el-date-picker
+    class="l-form-item-date"
     v-model="currentValue"
+    :type="item.eType"
+    :format="format"
+    :value-format="valueFormat"
     v-bind="$attrs"
     @change="handleChange"
-  >
-  </el-time-picker>
-  <el-time-select
-    v-else
-    class="l-form-item-timeselect"
-    v-model="currentValue"
-    v-bind="$attrs"
-    @change="handleChange"
-  >
-  </el-time-select>
+    >
+  </el-date-picker>
 </template>
 
 <script>
 export default {
-  name: 'LFormItemTime',
+  name: 'LFormItemDate',
   props: {
     model: {
       type: Object,
@@ -43,15 +38,28 @@ export default {
       type: Object,
       default: () => {
         return {
-          eType: 'select',
-          isRange: false
+          eType: 'date'
         }
       }
     }
   },
   computed: {
+    format () {
+      if (this.item.format) {
+        return this.item.format
+      }
+      let formatStr = this.getFormat()
+      return formatStr
+    },
+    valueFormat () {
+      if (this.item.valueFormat) {
+        return this.item.valueFormat
+      }
+      let formatStr = this.getFormat()
+      return formatStr
+    },
     isRange () {
-      return this.item.eType === 'picker' && this.item.isRange
+      return /.range$/.test(this.item.eType)
     },
     currentValue: {
       get () {
@@ -85,6 +93,34 @@ export default {
     }
   },
   methods: {
+    getFormat () {
+      let formatStr = ''
+      // year/month/date/dates/week/datetime/datetimerange/daterange/monthrange
+      switch (this.item.eType) {
+        case 'year':
+          formatStr = 'yyyy'
+          break
+        case 'month':
+        case 'monthrange':
+          formatStr = 'yyyy-MM'
+          break
+        case 'date':
+        case 'dates':
+        case 'daterange':
+          formatStr = 'yyyy-MM-dd'
+          break
+        case 'week':
+          formatStr = 'yyyy-MM WW周'
+          break
+        case 'datetime':
+        case 'datetimerange':
+          formatStr = 'yyyy-MM-dd HH:mm:ss'
+          break
+        default:
+          formatStr = 'yyyy-MM-dd HH:mm:ss'
+      }
+      return formatStr
+    },
     handleChange (v) {
       this.item.handle && typeof this.item.handle && this.item.handle(v, this.item)
     }
@@ -92,6 +128,5 @@ export default {
 }
 </script>
 <style lang='less' scoped>
-.l-form-item-input {
-}
+.l-form-item-date {}
 </style>

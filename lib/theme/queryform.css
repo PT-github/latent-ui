@@ -1,3 +1,19 @@
+.l-query-form {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.l-query-form .l-query-form_left {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: grid;
+}
+.l-query-form .l-query-form_right {
+  width: auto;
+}
+
 .l-form .l-form--inline-group {
   display: grid;
 }

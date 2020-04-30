@@ -2,13 +2,12 @@
  * @Author: PT
  * @Date: 2020-04-23 10:30:29
  * @LastEditors: PT
- * @LastEditTime: 2020-04-23 18:59:54
+ * @LastEditTime: 2020-04-29 16:35:17
  * @Description: 路由
  */
 
 import Vue from 'vue'
 import Router from 'vue-router'
-import Button from "./page/readme.md"
 import Layout from './components/Layout'
 import menuData from './data/menu.json'
 

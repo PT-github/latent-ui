@@ -90,6 +90,7 @@ export default {
   methods: {
     handleInput (v) {
       this.$emit('input', v, this.item)
+      this.item.handle && typeof this.item.handle && this.item.handle(v, this.item)
     }
   },
 
