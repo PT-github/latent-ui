@@ -1,44 +1,3 @@
-.l-form .l-form--inline-group {
-  display: grid;
-}
-.l-form .el-form--inline .el-form-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-.l-form .el-form--inline .el-form-item .el-form-item__content {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-.l-form .el-form--inline .el-form-item .el-form-item__content .l-form-item {
-  display: block;
-}
-.l-form .el-form--inline .el-form-item .el-form-item__content .l-form-item .l-form-item-number,
-.l-form .el-form--inline .el-form-item .el-form-item__content .l-form-item .el-select,
-.l-form .el-form--inline .el-form-item .el-form-item__content .l-form-item .el-date-editor {
-  width: 100%;
-}
-.l-form .el-form--inline .el-form-item .el-form-item__content .l-form-item .el-radio-group {
-  line-height: 40px;
-}
-
-.l-query-form {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-.l-query-form .l-query-form_left {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  display: grid;
-}
-.l-query-form .l-query-form_right {
-  width: auto;
-}
-
 @font-face {
   font-family: "l-iconfont";
   src: url('font/iconfont.eot?t=1587872572520'); /* IE9 */
@@ -525,6 +484,30 @@
   content: "\e763";
 }
 
+.l-form .l-form--inline-group {
+  display: grid;
+}
+.l-form .el-form--inline .el-form-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.l-form .el-form--inline .el-form-item .el-form-item__content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.l-form .el-form--inline .el-form-item .el-form-item__content .l-form-item {
+  display: block;
+}
+.l-form .el-form--inline .el-form-item .el-form-item__content .l-form-item .l-form-item-number,
+.l-form .el-form--inline .el-form-item .el-form-item__content .l-form-item .el-select,
+.l-form .el-form--inline .el-form-item .el-form-item__content .l-form-item .el-date-editor {
+  width: 100%;
+}
+.l-form .el-form--inline .el-form-item .el-form-item__content .l-form-item .el-radio-group {
+  line-height: 40px;
+}
 
 .l-button .el-button--small .l-iconfont, .l-button .el-button--mini .l-iconfont {
       font-size: 12px;
@@ -539,6 +522,23 @@
       line-height: 30px;
       cursor: pointer;
     }
+
+.l-query-form {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.l-query-form .l-query-form_left {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: grid;
+}
+.l-query-form .l-query-form_right {
+  width: auto;
+}
+
 
 
 
