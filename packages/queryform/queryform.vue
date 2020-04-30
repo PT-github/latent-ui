@@ -44,7 +44,6 @@ export default {
       type: Array,
       default: () => []
     },
-
     // 是否显示【重置】按钮
     showReset: {
       type: Boolean,
