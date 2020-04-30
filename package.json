@@ -91,6 +91,7 @@
     "not ie <= 8"
   ],
   "dependencies": {
+    "kind-of": "^6.0.3",
     "vue": "^2.6.11"
   }
 }

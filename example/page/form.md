@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-27 09:45:31
  * @LastEditors: PT
- * @LastEditTime: 2020-04-29 17:48:55
+ * @LastEditTime: 2020-04-30 11:32:52
  * @Description: file content
  -->
 
@@ -10,7 +10,7 @@
 
 > 标签： `<l-form></l-form>`
 
-**功能：** 配置按钮组。
+**功能：** 配置form表单。
 
 :::demo
 
@@ -18,6 +18,7 @@
 <template>
   <span>
     <l-form :fields="fields" v-model="form"></l-form>
+    <!-- <l-form :fields="fields" :inline="true" :inlineNumber="2" v-model="form"></l-form> -->
   form数据：{{ JSON.stringify(form) }}
   </span>
 </template>
@@ -297,6 +298,9 @@
 | ------------ | :-------------------------------------: | ------: | -------: |
 | fields       |           form内组件配置（详见下表）        |  array |     -     |
 | value/v-model|                   绑定值                 |   object |          |
+| inline       |          是否一行显示formitem       |   boolean |    false      |
+| inlineNumber| inline为true时有效，一行显示formitem个数|   number |    3    |
+| 其他属性配置，请参照element-ui中的form属性配置|
 
 **fields**
 

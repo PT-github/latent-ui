@@ -13,7 +13,17 @@
 	},
 	{
 		"label": "Form表单",
-		"name": "form"
+		"name": "form",
+		"children": [
+			{
+				"label": "基本表单",
+				"name": "form"
+			},
+			{
+				"label": "带搜索表单",
+				"name": "queryform"
+			}
+		]
 	},
 	{
 		"label": "Table表格",
