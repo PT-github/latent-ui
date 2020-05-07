@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-23 18:11:42
  * @LastEditors: PT
- * @LastEditTime: 2020-04-23 18:56:45
+ * @LastEditTime: 2020-05-07 16:00:10
  * @Description: 菜单
  -->
 <template>
@@ -18,11 +18,25 @@
             <i v-if="item.icon" class="item.icon"></i>
             <span>{{item.label}}</span>
           </template>
-          <el-menu-item
-            v-for="(sub, idx) in item.children"
-            :key="index + '_submenu_' + idx"
-            :index="'/' + sub.name"
-          >{{ sub.label }}</el-menu-item>
+          <template v-if="item.childrenGroup">
+            <el-menu-item-group
+              v-for="(sub, idx) in item.children"
+              :key="index + '_submenu_' + idx"
+              >
+              <template slot="title">{{ sub.label }}</template>
+              <el-menu-item
+                v-for="(gsub, idx2) in sub.children"
+                :key="index + '_submenu_' + idx + '_' + idx2"
+                :index="'/' + gsub.name">{{ gsub.label }}</el-menu-item>
+            </el-menu-item-group>
+          </template>
+          <template v-else>
+            <el-menu-item
+              v-for="(sub, idx) in item.children"
+              :key="index + '_submenu_' + idx"
+              :index="'/' + sub.name"
+            >{{ sub.label }}</el-menu-item>
+          </template>
         </el-submenu>
       </template>
     </el-menu>
@@ -64,25 +78,25 @@
 </template>
 
 <script>
-import menuData from "../data/menu.json";
+import menuData from '../data/menu.json'
 export default {
-  name: "Menu",
-  data() {
+  name: 'Menu',
+  data () {
     return {
       menuData
-    };
+    }
   },
 
   components: {},
 
   computed: {},
 
-  mounted() {},
+  mounted () {},
 
   methods: {},
 
   watch: {}
-};
+}
 </script>
 <style lang='less' scoped>
 .menu {

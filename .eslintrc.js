@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-20 20:30:52
  * @LastEditors: PT
- * @LastEditTime: 2020-04-26 10:11:51
+ * @LastEditTime: 2020-05-06 11:49:35
  * @Description: file content
  */
 module.exports = {
@@ -28,6 +28,9 @@ module.exports = {
 		"vue"
 	],
 	"rules": {
+		"eqeqeq": ["error", "always"],
+		"no-multi-spaces": "error",
+		"no-empty": 0,
 		// allow space-before-function-paren
 		"space-before-function-paren": ["error", "always"], // 函数[匿名函数]名 括号
 		"semi": ["error", "never"], // 无分号

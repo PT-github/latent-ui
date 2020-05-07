@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-27 09:45:31
  * @LastEditors: PT
- * @LastEditTime: 2020-04-30 11:32:52
+ * @LastEditTime: 2020-05-07 17:03:06
  * @Description: file content
  -->
 
@@ -17,7 +17,7 @@
 ```html
 <template>
   <span>
-    <l-form :fields="fields" v-model="form"></l-form>
+    <l-form :rules="rules" :fields="fields" v-model="form"></l-form>
     <!-- <l-form :fields="fields" :inline="true" :inlineNumber="2" v-model="form"></l-form> -->
   form数据：{{ JSON.stringify(form) }}
   </span>
@@ -26,6 +26,12 @@
   export default {
     data() {
       return {
+        rules: {
+          inputname: [
+            { required: true, message: '请输入活动名称', trigger: 'blur' },
+            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+          ],
+        },
         form: {
           textname: "x湖南xxx活动",
           inputname: "自由活动",

@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-23 10:30:29
  * @LastEditors: PT
- * @LastEditTime: 2020-04-29 16:35:17
+ * @LastEditTime: 2020-05-07 16:07:12
  * @Description: 路由
  */
 
@@ -22,16 +22,32 @@ function getRouter () {
       }
       routeList.push(item)
     } else {
-      i.children.map((ii, iindex) => {
-        if (ii.name) {
-          const item = {
-            path: '/' + ii.name,
-            component: () => import('./page/' + ii.name + '.md'),
-            name: ii.label
+      if (i.childrenGroup) {
+        // 子菜单分组
+        i.children.map((ii, iindex) => {
+          if (ii.children) {
+            ii.children.map(iii => {
+              const item = {
+                path: '/' + iii.name,
+                component: () => import('./page/' + iii.name + '.md'),
+                name: iii.label
+              }
+              routeList.push(item)
+            })
           }
-          routeList.push(item)
-        }
-      })
+        })
+      } else {
+        i.children.map((ii, iindex) => {
+          if (ii.name) {
+            const item = {
+              path: '/' + ii.name,
+              component: () => import('./page/' + ii.name + '.md'),
+              name: ii.label
+            }
+            routeList.push(item)
+          }
+        })
+      }
     }
   })
   return routeList

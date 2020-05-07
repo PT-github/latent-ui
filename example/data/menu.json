@@ -28,10 +28,25 @@
 	{
 		"label": "Table表格",
 		"name": "table",
+		"childrenGroup": true,
 		"children": [
 			{
 				"label": "基本表格",
-				"name": "table"
+				"name": "table",
+				"children": [
+					{
+						"label": "表格传值",
+						"name": "table-data"
+					},
+					{
+						"label": "表格高度",
+						"name": "table-height"
+					},
+					{
+						"label": "表格带分页",
+						"name": "table-pagination"
+					}
+				]
 			},
 			{
 				"label": "表格带查询",
