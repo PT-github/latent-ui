@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-30 12:04:10
  * @LastEditors: PT
- * @LastEditTime: 2020-05-07 17:49:43
+ * @LastEditTime: 2020-05-08 17:41:27
  * @Description: 表格组件
  -->
 
@@ -51,6 +51,7 @@
       </template>
     </el-table>
     <el-pagination
+      ref="pagination"
       v-show="showPage"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
@@ -100,17 +101,18 @@ export default {
   },
   data () {
     return {
-      tableData: [],
-      tHeight: null,
+      tableData: [], // 表格数据
+      tHeight: null, // 表格高度
       observeDom: null, // 被监听节点
       parentNode: null, // 父容器
-      timer: null,
+      timer: null, // 用于函数防抖
       loading: false, // 表格loading
       localPagination: {
         pageNo: 1,
         total: null,
         pageSize: 10
       }, // 翻页数据
+      paginationHeight: null, // 翻页组件高度
 
 
 
@@ -150,6 +152,9 @@ export default {
       this.observeDom = this.parentSelector ? (document.querySelector(this.parentSelector) || this.parentNode) : this.parentNode
       // 设置父容器溢出隐藏
       this.parentNode.style.overflow = 'hidden'
+      // 翻页组件高度
+      console.log(this.$refs.pagination)
+      this.showPage && (this.paginationHeight = window.getComputedStyle(this.$refs.pagination.$el).height)
       // 监听高度变化的容器class和style属性变化
       this.observe = domObserve(this.observeDom, {
         attributes: true,
@@ -166,7 +171,9 @@ export default {
     this.autoHeight && window.removeEventListener('resize', this.handleTableHeight) && this.observe.disconnect()
   },
   methods: {
-    // 同步localPagination数据
+    /**
+     * @description 同步localPagination数据
+     */
     asyncLocalPagination (pagination) {
       Object.assign(this.localPagination, {
         pageNo: pagination.pageNo || pagination[this.attrProps && this.attrProps.pageNo ? this.attrProps.pageNo : 'pageNo'], // 返回结果中的当前分页数
@@ -174,10 +181,17 @@ export default {
       })
     },
     /**
-     * 同步数据
-     * @param {Object} pagination 分页选项器
-     * @param {Object} filters 过滤条件
-     * @param {Object} sorter 排序条件
+     * @description 表格重新加载数据
+     * @param {Boolean} bool 是否返回到第一页
+     */
+    reloadData (bool = false) {
+      bool && Object.assign(this.localPagination, {
+        pageNo: 1
+      })
+      this.loadData()
+    },
+    /**
+     * @description 同步数据
      */
     loadData () {
       this.tableData.splice(0, this.tableData.length)
@@ -215,165 +229,31 @@ export default {
     handleTableHeight () {
       clearTimeout(this.timer)
       this.timer = setTimeout(() => {
-        let height = window.getComputedStyle(this.parentNode).height
+        let height = window.getComputedStyle(this.parentNode).height // 外部容器高度
+        if (this.showPage) {
+          try {
+            height = (Number(height.substring(0, height.length - 2)) - Number(this.paginationHeight.substring(0, this.paginationHeight.length - 2))) + 'px'
+          } catch (error) {
+            console.error('table组件计算pagination高度发生错误', error)
+          }
+        }
         this.tHeight = height
       }, 0)
     },
+    /**
+     * @description 监听翻页组件pageSize改变
+     */
     handleSizeChange (val) {
       this.localPagination.pageSize = val
       this.loadData()
     },
+    /**
+     * @description 监听翻页组件pageNo改变
+     */
     handleCurrentChange (val) {
       this.localPagination.pageNo = val
       this.loadData()
-    },
-
-
-
-
-
-
-
-
-
-    /**
-     * 加载数据方法
-     * @param {Object} pagination 分页选项器
-     * @param {Object} filters 过滤条件
-     * @param {Object} sorter 排序条件
-     */
-    _loadData (pagination, filters, sorter) {
-      this.emitLoadStart()
-      this.localLoading = true
-      const parameter = Object.assign(
-        {
-          pageNo:
-            (pagination && pagination.current) ||
-            this.localPagination.current ||
-            this.pageNum,
-          pageSize:
-            (pagination && pagination.pageSize) ||
-            this.localPagination.pageSize ||
-            this.pageSize
-        },
-        (sorter &&
-          sorter.field && {
-            sortField: sorter.field
-          }) ||
-          {},
-        (sorter &&
-          sorter.order && {
-            sortOrder: sorter.order
-          }) ||
-          {},
-        {
-          ...filters
-        }
-      )
-      if (this.data instanceof Object) {
-        let d = this.data
-        this.localDataSource = d.data
-        this.localPagination = Object.assign({}, this.localPagination, {
-          current: d.pageNo, // 返回结果中的当前分页数
-          total: d.total, // 返回结果中的总记录数
-          showSizeChanger: this.showSizeChanger,
-          pageSize:
-            (pagination && pagination.pageSize) || this.localPagination.pageSize
-        })
-        return
-      }
-      const result = this.data(parameter)
-      // 对接自己的通用数据接口需要修改下方代码中的 r.pageNo, r.totalCount, r.data
-      // eslint-disable-next-line
-      if (
-        (typeof result === 'object' || typeof result === 'function') &&
-        typeof result.then === 'function'
-      ) {
-        result.then(r => {
-          this.localPagination = Object.assign({}, this.localPagination, {
-            current: r.pageNo, // 返回结果中的当前分页数
-            total: r.total, // 返回结果中的总记录数
-            showSizeChanger: this.showSizeChanger,
-            pageSize:
-              (pagination && pagination.pageSize) ||
-              this.localPagination.pageSize
-          })
-          // 为防止删除数据后导致页面当前页面数据长度为 0 ,自动翻页到上一页
-          if (r.list.length === 0 && this.localPagination.current > 1) {
-            this.localPagination.current--
-            this.loadData()
-            return
-          }
-
-          // 这里用于判断接口是否有返回 r.totalCount 或 this.showPagination = false
-          // 当情况满足时，表示数据不满足分页大小，关闭 table 分页功能
-          (!this.showPagination ||
-            (!r.totalCount && this.showPagination === 'auto')) &&
-            (this.localPagination.hideOnSinglePage = true)
-          this.localDataSource = r.list // 返回结果中的数组数据
-          this.localLoading = false
-          // loading.close();
-          this.emitLoadFinished()
-        })
-      } else if (typeof result === 'object' && !result.then) {
-        this.localPagination = Object.assign({}, this.localPagination, {
-          current: result.pageNo, // 返回结果中的当前分页数
-          total: result.total, // 返回结果中的总记录数
-          showSizeChanger: this.showSizeChanger,
-          pageSize:
-            (pagination && pagination.pageSize) || this.localPagination.pageSize
-        })
-        this.localDataSource = result.list // 返回结果中的数组数据
-        // loading.close();
-        this.localLoading = false
-        this.emitLoadFinished()
-      }
-      // loading.close();
-    },
-
-
-
-
-
-    handlerResize () {
-      this.$nextTick(() => {
-        if (this.showPage) {
-          this.tHeight = this.$el.offsetHeight - this.paginationHeight
-        } else {
-          this.tHeight = this.$el.offsetHeight
-        }
-        // console.log('分页:', this.paginationHeight)
-        this.$refs.table.$el.style.height = this.tHeight + 'px'
-      })
-    },
-    /**
-     * 表格重新加载方法
-     * 如果参数为 true, 则强制刷新到第一页
-     * @param Boolean bool
-     */
-    refresh (bool = false) {
-      bool &&
-        (this.localPagination = Object.assign(
-          {},
-          {
-            current: 1,
-            pageSize: this.pageSize
-          }
-        ))
-      this.loadData()
-    },
-    
-    emitLoadStart () {
-      this.$nextTick(() => {
-        this.$emit('load-start')
-      })
-    },
-    emitLoadFinished () {
-      this.$nextTick(() => {
-        this.$emit('load-finished')
-      })
-    },
-    
+    }
   },
   components: {
     LTableColumn

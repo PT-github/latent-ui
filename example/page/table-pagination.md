@@ -2,13 +2,13 @@
  * @Author: PT
  * @Date: 2020-05-07 17:23:15
  * @LastEditors: PT
- * @LastEditTime: 2020-05-07 17:51:04
+ * @LastEditTime: 2020-05-08 17:26:35
  * @Description: file content
  -->
 # Table 组件
 > 标签： `<l-table></l-table>`
 
-**功能：** 高度设定
+**功能：** 带分页的表格兼容高度设定
 <br>
 <br>
 
