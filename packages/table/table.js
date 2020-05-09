@@ -1,71 +1,11 @@
-<!--
+/*
  * @Author: PT
- * @Date: 2020-04-30 12:04:10
+ * @Date: 2020-05-09 11:18:22
  * @LastEditors: PT
- * @LastEditTime: 2020-05-09 17:57:56
+ * @LastEditTime: 2020-05-09 17:27:49
  * @Description: 表格组件
- -->
-
-<template>
-  <div class="l-table">
-    <el-table
-      ref="table"
-      v-loading="loading"
-      :data="tableData"
-      :height="tHeight"
-      v-bind="$attrs"
-      v-on="$listeners"
-    >
-      <template v-for="(item, index) in columns">
-        <l-table-column
-          :key="item.value + '_' + index"
-          :item="item"
-          :type="item.type"
-          :index="item.index"
-          :column-key="item.columnKey"
-          :label="item.label"
-          :prop="item.prop"
-          :width="item.width"
-          :min-width="item.minWidth"
-          :fixed="item.fixed"
-          :render-header="item.renderHeader"
-          :sortable="item.sortable"
-          :sort-method="item.sortMethod"
-          :sort-by="item.sortBy"
-          :sort-orders="item.sortOrders"
-          :resizable="item.resizable !== false"
-          :formatter="item.formatter"
-          :show-overflow-tooltip="item.showOverflowTooltip"
-          :align="item.align"
-          :header-align="item.headerAlign"
-          :class-name="item.className"
-          :label-class-name="item.labelClassName"
-          :selectable="item.selectable"
-          :reserve-selection="item.reserveSelection"
-          :filters="item.filters"
-          :filter-placement="item.filterPlacement"
-          :filter-multiple="item.filterMultiple"
-          :filter-method="item.filterMethod"
-          :filtered-value="item.filteredValue"
-        ></l-table-column>
-      </template>
-    </el-table>
-    <el-pagination
-      ref="pagination"
-      v-show="showPage"
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-      :current-page.sync="localPagination.pageNo"
-      :total="localPagination.total"
-      :page-sizes="[10,20,30,40,50]"
-      :page-size="localPagination.pageSize"
-      layout="total, prev, pager, next, sizes, jumper"
-    />
-  </div>
-</template>
-
-<script>
-import LTableColumn from './table-column.vue'
+ */
+import LTableColumn from './table-column.js'
 import { domObserve } from '../../src/utils/dom-helper'
 export default {
   name: 'LTable',
@@ -106,11 +46,69 @@ export default {
       default: true
     }
   },
+  render () {
+    console.log(this.$slots, this.$scopedSlots, '====')
+    return (
+      <div class="l-table">
+        <el-table
+          ref="table"
+          vLoading={this.loading}
+          data={this.tableData}
+          height={this.tHeight}
+          {
+            ...{
+              props: this.$attrs,
+              on: this.$listeners
+            }
+          }
+        >
+          {
+            this.columns.map((item, index) => {
+              return <LTableColumn
+                key={item.value + '_' + index}
+                item={item}
+                type={item.type}
+                index={item.index}
+                column-key={item.columnKey}
+                label={item.label}
+                prop={item.value}
+                width={item.width}
+                min-width={item.minWidth}
+                fixed={item.fixed}
+                render-header={item.renderHeader}
+                sortable={item.sortable}
+                sort-method={item.sortMethod}
+                sort-by={item.sortBy}
+                sort-orders={item.sortOrders}
+                resizable={item.resizable !== false}
+                formatter={item.formatter}
+                show-overflow-tooltip={item.showOverflowTooltip}
+                align={item.align}
+                header-align={item.headerAlign}
+                class-name={item.className}
+                label-class-name={item.labelClassName}
+                selectable={item.selectable}
+                reserve-selection={item.reserveSelection}
+                filters={item.filters}
+                filter-placement={item.filterPlacement}
+                filter-multiple={item.filterMultiple}
+                filter-method={item.filterMethod}
+                filtered-value={item.filteredValue}
+                scopedSlots={{
+                  ...this.$scopedSlots
+                }}
+              ></LTableColumn>
+            })
+          }
+        </el-table>
+        {
+          this.paginationRender()
+        }
+      </div>
+    )
+  },
   data () {
     return {
-      test: {
-        name: '你好'
-      },
       tableData: [], // 表格数据
       tHeight: null, // 表格高度
       observeDom: null, // 被监听节点
@@ -148,8 +146,6 @@ export default {
     }
   },
   mounted () {
-    console.log('this.$slots', this.$slots)
-    console.log('this.$scopedSlots', this.$scopedSlots)
     this.tHeight = this.height || null
     if (!this.height && this.autoHeight) {// 高度自适应
       // 父容器
@@ -177,6 +173,27 @@ export default {
     this.autoHeight && window.removeEventListener('resize', this.handleTableHeight) && this.observe.disconnect()
   },
   methods: {
+    paginationRender () {
+      if (this.showPage) {
+        return <el-pagination
+          ref="pagination"
+          v-show="showPage"
+          {
+            ...{
+              on: {
+                'current-change': this.handleCurrentChange,
+                'size-change': this.handleSizeChange
+              }
+            }
+          }
+          current-page={this.localPagination.pageNo}
+          total={this.localPagination.total}
+          pageSizes={[10,20,30,40,50]}
+          pageSize={this.localPagination.pageSize}
+          layout="total, prev, pager, next, sizes, jumper"
+        />
+      }
+    },
     /**
      * @description 同步localPagination数据
      */
@@ -258,12 +275,9 @@ export default {
      * @description 监听翻页组件pageNo改变
      */
     handleCurrentChange (val) {
+      console.log('111', val)
       this.localPagination.pageNo = val
       this.loadData()
     }
-  },
-  components: {
-    LTableColumn
   }
 }
-</script>

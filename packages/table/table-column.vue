@@ -2,8 +2,8 @@
  * @Author: PT
  * @Date: 2020-04-30 15:32:35
  * @LastEditors: PT
- * @LastEditTime: 2020-05-09 10:06:20
- * @Description: file content
+ * @LastEditTime: 2020-05-09 16:33:05
+ * @Description: TableColumn组件
  -->
  
 <template>
@@ -79,7 +79,9 @@ export default {
 
   computed: {},
 
-  mounted () {},
+  mounted () {
+    console.log(this.$scopedSlots, 'xxxxxx')
+  },
 
   methods: {},
 

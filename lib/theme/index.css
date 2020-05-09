@@ -1,16 +1,28 @@
-.l-button .el-button--small .l-iconfont, .l-button .el-button--mini .l-iconfont {
-      font-size: 12px;
-    }
-  .l-button .el-button--medium .l-iconfont {
-      font-size: 14px;
-    }
-  .el-popover.l-button-popper {
-  min-width: 100px;
+
+.l-form .l-form--inline-group {
+  display: grid;
 }
-  .el-popover.l-button-popper .l-button-more .l-button-more-item {
-      line-height: 30px;
-      cursor: pointer;
-    }
+.l-form .el-form--inline .el-form-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.l-form .el-form--inline .el-form-item .el-form-item__content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.l-form .el-form--inline .el-form-item .el-form-item__content .l-form-item {
+  display: block;
+}
+.l-form .el-form--inline .el-form-item .el-form-item__content .l-form-item .l-form-item-number,
+.l-form .el-form--inline .el-form-item .el-form-item__content .l-form-item .el-select,
+.l-form .el-form--inline .el-form-item .el-form-item__content .l-form-item .el-date-editor {
+  width: 100%;
+}
+.l-form .el-form--inline .el-form-item .el-form-item__content .l-form-item .el-radio-group {
+  line-height: 40px;
+}
 
 .l-query-form {
   width: 100%;
@@ -26,6 +38,24 @@
 }
 .l-query-form .l-query-form_right {
   width: auto;
+}
+
+.l-querytable {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.l-querytable .l-querytable_table {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 @font-face {
@@ -514,49 +544,19 @@
   content: "\e763";
 }
 
-.l-querytable {
-  width: 100%;
-  height: 100%;
-  min-height: 200px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+.l-button .el-button--small .l-iconfont, .l-button .el-button--mini .l-iconfont {
+      font-size: 12px;
+    }
+  .l-button .el-button--medium .l-iconfont {
+      font-size: 14px;
+    }
+  .el-popover.l-button-popper {
+  min-width: 100px;
 }
-.l-querytable .l-querytable_table {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-
-.l-form .l-form--inline-group {
-  display: grid;
-}
-.l-form .el-form--inline .el-form-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-.l-form .el-form--inline .el-form-item .el-form-item__content {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-.l-form .el-form--inline .el-form-item .el-form-item__content .l-form-item {
-  display: block;
-}
-.l-form .el-form--inline .el-form-item .el-form-item__content .l-form-item .l-form-item-number,
-.l-form .el-form--inline .el-form-item .el-form-item__content .l-form-item .el-select,
-.l-form .el-form--inline .el-form-item .el-form-item__content .l-form-item .el-date-editor {
-  width: 100%;
-}
-.l-form .el-form--inline .el-form-item .el-form-item__content .l-form-item .el-radio-group {
-  line-height: 40px;
-}
-
+  .el-popover.l-button-popper .l-button-more .l-button-more-item {
+      line-height: 30px;
+      cursor: pointer;
+    }
 
 
 

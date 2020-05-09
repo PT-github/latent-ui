@@ -35,6 +35,10 @@
 				"name": "table",
 				"children": [
 					{
+						"label": "简单表格",
+						"name": "table"
+					},
+					{
 						"label": "表格传值",
 						"name": "table-data"
 					},
