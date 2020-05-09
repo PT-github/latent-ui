@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-30 15:32:35
  * @LastEditors: PT
- * @LastEditTime: 2020-05-06 17:46:49
+ * @LastEditTime: 2020-05-09 10:06:20
  * @Description: file content
  -->
  
@@ -21,7 +21,40 @@
         <span>{{ scope.row[item.value] }}</span>
       </template>
     </template>
-
+    <template v-if="item.children && item.children.length > 0">
+      <l-table-column
+        v-for="(column, idx) in item.children"
+        :key="'column_' + idx + '_' + item.value"
+        :item="column"
+        :type="item.type"
+        :index="column.index"
+        :column-key="column.columnKey"
+        :label="column.label"
+        :prop="column.prop"
+        :width="column.width"
+        :min-width="column.minWidth"
+        :fixed="column.fixed"
+        :render-header="column.renderHeader"
+        :sortable="column.sortable"
+        :sort-method="column.sortMethod"
+        :sort-by="column.sortBy"
+        :sort-orders="column.sortOrders"
+        :resizable="column.resizable !== false"
+        :formatter="column.formatter"
+        :show-overflow-tooltip="column.showOverflowTooltip"
+        :align="column.align"
+        :header-align="column.headerAlign"
+        :class-name="column.className"
+        :label-class-name="column.labelClassName"
+        :selectable="column.selectable"
+        :reserve-selection="column.reserveSelection"
+        :filters="column.filters"
+        :filter-placement="column.filterPlacement"
+        :filter-multiple="column.filterMultiple"
+        :filter-method="column.filterMethod"
+        :filtered-value="column.filteredValue"
+      ></l-table-column>
+    </template>
   </el-table-column>
 </template>
 
