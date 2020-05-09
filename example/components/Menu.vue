@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-23 18:11:42
  * @LastEditors: PT
- * @LastEditTime: 2020-05-07 16:00:10
+ * @LastEditTime: 2020-05-09 22:58:06
  * @Description: 菜单
  -->
 <template>
@@ -99,6 +99,4 @@ export default {
 }
 </script>
 <style lang='less' scoped>
-.menu {
-}
 </style>

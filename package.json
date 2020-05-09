@@ -39,6 +39,7 @@
     "@vue/babel-preset-jsx": "^1.1.2",
     "@vue/test-utils": "^1.0.0-beta.33",
     "autoprefixer": "^9.7.6",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "clean-css": "^4.2.3",
     "css-loader": "^3.5.2",
@@ -94,6 +95,7 @@
   ],
   "dependencies": {
     "kind-of": "^6.0.3",
+    "sortablejs": "^1.10.2",
     "vue": "^2.6.11"
   }
 }

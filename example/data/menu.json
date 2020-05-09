@@ -57,6 +57,10 @@
 					{
 						"label": "多级表头",
 						"name": "multable"
+					},
+					{
+						"label": "表格列拖拽",
+						"name": "table-column-drag"
 					}
 				]
 			},

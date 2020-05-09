@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-23 10:30:29
  * @LastEditors: PT
- * @LastEditTime: 2020-05-07 16:07:12
+ * @LastEditTime: 2020-05-09 23:16:10
  * @Description: 路由
  */
 
@@ -13,7 +13,7 @@ import menuData from './data/menu.json'
 
 function getRouter () {
   const routeList = []
-  menuData.map((i, index) => {
+  menuData.map((i) => {
     if (!i.children) {
       const item = {
         path: '/' + i.name,
@@ -24,7 +24,7 @@ function getRouter () {
     } else {
       if (i.childrenGroup) {
         // 子菜单分组
-        i.children.map((ii, iindex) => {
+        i.children.map((ii) => {
           if (ii.children) {
             ii.children.map(iii => {
               const item = {
@@ -37,7 +37,7 @@ function getRouter () {
           }
         })
       } else {
-        i.children.map((ii, iindex) => {
+        i.children.map((ii) => {
           if (ii.name) {
             const item = {
               path: '/' + ii.name,

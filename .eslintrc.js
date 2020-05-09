@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-04-20 20:30:52
  * @LastEditors: PT
- * @LastEditTime: 2020-05-06 11:49:35
+ * @LastEditTime: 2020-05-09 23:25:46
  * @Description: file content
  */
 module.exports = {
@@ -21,6 +21,7 @@ module.exports = {
 		"SharedArrayBuffer": "readonly"
 	},
 	"parserOptions": {
+		"parser": "babel-eslint",
 		"ecmaVersion": 2018,
 		"sourceType": "module"
 	},

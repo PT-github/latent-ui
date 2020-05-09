@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-05-09 16:50:48
  * @LastEditors: PT
- * @LastEditTime: 2020-05-09 17:56:16
+ * @LastEditTime: 2020-05-09 23:43:06
  * @Description: file content
  */
 export default {
@@ -81,9 +81,7 @@ export default {
 
   computed: {},
 
-  mounted () {
-    console.log(this.$scopedSlots, 'xxxxxx', this.$attrs)
-  },
+  mounted () {},
 
   methods: {},
 

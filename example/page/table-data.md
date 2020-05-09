@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-05-07 16:00:40
  * @LastEditors: PT
- * @LastEditTime: 2020-05-07 17:21:57
+ * @LastEditTime: 2020-05-09 23:32:42
  * @Description: file content
  -->
 # Table 组件
@@ -19,12 +19,12 @@
   <div class="demo-01">
     <div class="title">表格一(传Array数组)：</div>
     <div class="table-box" style="height: 300px;">
-      <l-table :dataSource="table.data" :columns="table.columns" :showPage="false">
+      <l-table :dataSource="table.data" :columns="table.columns1" :showPage="false">
       </l-table>
     </div>
     <div class="title" style="margin-top: 20px;">表格二(传方法)：</div>
     <div class="table-box" style="height: 200px;">
-      <l-table :dataSource="data2" :columns="table.columns" :showPage="false">
+      <l-table :dataSource="data2" :columns="table.columns2" :showPage="false">
       </l-table>
     </div>
   </div>
@@ -71,7 +71,24 @@
       return {
         table: {
           data: data,
-          columns: [
+          columns1: [
+            {
+              label: '日期',
+              value: 'date',
+              align: 'left'
+            },
+            {
+              label: '姓名',
+              value: 'name',
+              align: 'left'
+            },
+            {
+              label: '地址',
+              value: 'address',
+              align: 'left'
+            },
+          ],
+          columns2: [
             {
               label: '日期',
               value: 'date',

@@ -2,11 +2,12 @@
  * @Author: PT
  * @Date: 2020-05-09 11:18:22
  * @LastEditors: PT
- * @LastEditTime: 2020-05-09 17:27:49
+ * @LastEditTime: 2020-05-10 00:29:52
  * @Description: 表格组件
  */
 import LTableColumn from './table-column.js'
 import { domObserve } from '../../src/utils/dom-helper'
+import Sortable from 'sortablejs'
 export default {
   name: 'LTable',
   props: {
@@ -30,7 +31,7 @@ export default {
       default: true
     },
     // 表格固定高度
-    height: [ String, Number ],
+    height: [String, Number],
     // 高度自适应（适合容器高度不固定时，动态设置表格高度），组件默认会监听容器（可以通过parentSelector修改监听dom节点）的class/style属性，class/style发生变化，则重新设置table表格高度【window.onresize时也会重新设置高度】
     autoHeight: {
       type: Boolean,
@@ -44,10 +45,14 @@ export default {
     showPage: {
       type: Boolean,
       default: true
+    },
+    // 列是否可拖拽
+    columnDrag: {
+      type: Boolean,
+      default: false
     }
   },
   render () {
-    console.log(this.$slots, this.$scopedSlots, '====')
     return (
       <div class="l-table">
         <el-table
@@ -56,10 +61,10 @@ export default {
           data={this.tableData}
           height={this.tHeight}
           {
-            ...{
-              props: this.$attrs,
-              on: this.$listeners
-            }
+          ...{
+            props: this.$attrs,
+            on: this.$listeners
+          }
           }
         >
           {
@@ -124,20 +129,12 @@ export default {
     }
   },
   watch: {
-    pageNum (val) {
-      Object.assign(this.localPagination, {
-        current: val
-      })
-    },
-    pageSize (val) {
-      Object.assign(this.localPagination, {
-        pageSize: val
-      })
-    },
-    showSizeChanger (val) {
-      Object.assign(this.localPagination, {
-        showSizeChanger: val
-      })
+    columns: {
+      handler: function (v) {
+        console.log(v, 'columns发生了变化')
+        // console.log(this.$refs.table.store.updateColumns())
+      },
+      deep: true
     }
   },
   created () {
@@ -160,12 +157,26 @@ export default {
       // 监听高度变化的容器class和style属性变化
       this.observe = domObserve(this.observeDom, {
         attributes: true,
-        attributeFilter: [ 'class', 'style' ]
+        attributeFilter: ['class', 'style']
       }, this.handleTableHeight)
       // window resize监听
       window.addEventListener('resize', this.handleTableHeight)
       // 高度未设定时，计算表格高度
       this.handleTableHeight()
+    }
+    if (this.columnDrag) {
+      const wrapperTr = this.$el.querySelector('.el-table__header-wrapper tr')
+      this.sortable = Sortable.create(wrapperTr, {
+        animation: 180,
+        delay: 0,
+        onEnd: evt => {
+          if (evt.oldIndex !== evt.newIndex) {
+            const oldItem = this.$refs.table.store.states._columns[evt.oldIndex]
+            this.$refs.table.store.commit('removeColumn', oldItem)
+            this.$refs.table.store.commit('insertColumn', oldItem, evt.newIndex)
+          }
+        }
+      })
     }
   },
   destroyed () {
@@ -179,16 +190,16 @@ export default {
           ref="pagination"
           v-show="showPage"
           {
-            ...{
-              on: {
-                'current-change': this.handleCurrentChange,
-                'size-change': this.handleSizeChange
-              }
+          ...{
+            on: {
+              'current-change': this.handleCurrentChange,
+              'size-change': this.handleSizeChange
             }
+          }
           }
           current-page={this.localPagination.pageNo}
           total={this.localPagination.total}
-          pageSizes={[10,20,30,40,50]}
+          pageSizes={[10, 20, 30, 40, 50]}
           pageSize={this.localPagination.pageSize}
           layout="total, prev, pager, next, sizes, jumper"
         />
@@ -275,7 +286,6 @@ export default {
      * @description 监听翻页组件pageNo改变
      */
     handleCurrentChange (val) {
-      console.log('111', val)
       this.localPagination.pageNo = val
       this.loadData()
     }

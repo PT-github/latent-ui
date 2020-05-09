@@ -2,7 +2,7 @@
  * @Author: PT
  * @Date: 2020-05-09 10:09:27
  * @LastEditors: PT
- * @LastEditTime: 2020-05-09 18:03:18
+ * @LastEditTime: 2020-05-09 23:49:51
  * @Description: file content
  -->
 # Table 组件
@@ -26,7 +26,7 @@
     ></l-querytable> -->
     <l-table :dataSource="table.data"
       :columns="table.columns">
-      <template v-slot:domesticHeader>
+      <!-- <template v-slot:domesticHeader>
         domesticHeader插槽(国内)
       </template>
       <template v-slot:firstName1Header>
@@ -34,7 +34,7 @@
       </template>
       <template v-slot:firstName1="scope">
         firstName1插槽:{{scope.row.firstName1}}
-      </template>
+      </template> -->
     </l-table>
   </div>
 </template>
