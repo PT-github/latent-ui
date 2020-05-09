@@ -12,6 +12,22 @@
       cursor: pointer;
     }
 
+.l-query-form {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.l-query-form .l-query-form_left {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: grid;
+}
+.l-query-form .l-query-form_right {
+  width: auto;
+}
+
 @font-face {
   font-family: "l-iconfont";
   src: url('font/iconfont.eot?t=1587872572520'); /* IE9 */
@@ -523,20 +539,22 @@
   line-height: 40px;
 }
 
-.l-query-form {
+.l-querytable {
   width: 100%;
+  height: 100%;
+  min-height: 200px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
-.l-query-form .l-query-form_left {
+.l-querytable .l-querytable_table {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  display: grid;
-}
-.l-query-form .l-query-form_right {
-  width: auto;
 }
 
 

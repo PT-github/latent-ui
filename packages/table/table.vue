@@ -2,12 +2,12 @@
  * @Author: PT
  * @Date: 2020-04-30 12:04:10
  * @LastEditors: PT
- * @LastEditTime: 2020-05-08 17:41:27
+ * @LastEditTime: 2020-05-09 09:49:49
  * @Description: 表格组件
  -->
 
 <template>
-  <div class="s-table">
+  <div class="l-table">
     <el-table
       ref="table"
       v-loading="loading"
@@ -77,6 +77,13 @@ export default {
       type: [Function, Array],
       required: true
     },
+    // 查询的附属参数
+    queryParams: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    },
     // 创建组件完成后就开始同步数据
     loadDataAuto: {
       type: Boolean,
@@ -97,7 +104,7 @@ export default {
     showPage: {
       type: Boolean,
       default: true
-    },
+    }
   },
   data () {
     return {
@@ -113,12 +120,6 @@ export default {
         pageSize: 10
       }, // 翻页数据
       paginationHeight: null, // 翻页组件高度
-
-
-
-      localDataSource: [],
-      tableHeight: 600, // 表格高度
-      sortArr: [] //排序数组字段
     }
   },
   watch: {
@@ -207,7 +208,8 @@ export default {
         // 执行dataSource中的方法，传入{pageNo, pageSize}数据(传参的key值以attrProps中传了pageNo和pageSize对应字段为准)
         let queryParams = {
           [this.attrProps && this.attrProps.pageNo ? this.attrProps.pageNo : 'pageNo']: this.localPagination.pageNo,
-          [this.attrProps && this.attrProps.pageSize ? this.attrProps.pageSize : 'pageSize']: this.localPagination.pageSize
+          [this.attrProps && this.attrProps.pageSize ? this.attrProps.pageSize : 'pageSize']: this.localPagination.pageSize,
+          ...this.queryParams
         }
         let result = this.dataSource(queryParams)
         if (result && result.then) {

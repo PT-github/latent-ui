@@ -1,14 +1,14 @@
 <!--
  * @Author: PT
- * @Date: 2020-05-07 17:23:15
+ * @Date: 2020-05-09 09:24:16
  * @LastEditors: PT
- * @LastEditTime: 2020-05-09 09:19:28
+ * @LastEditTime: 2020-05-09 09:40:06
  * @Description: file content
  -->
 # Table 组件
-> 标签： `<l-table></l-table>`
+> 标签： `<l-querytable></l-querytable>`
 
-**功能：** 带分页的表格兼容高度设定
+**功能：** 带查询的表格
 <br>
 <br>
 
@@ -16,17 +16,13 @@
 
 ```html
 <template>
-  <div class="demo-02">
-    <div class="title">表格一(高度自适应)：</div>
-    <div class="table-box" style="height: 400px;">
-      <l-table :dataSource="table.data" :columns="table.columns">
-      </l-table>
-    </div>
-    <div class="title" style="margin-top: 20px;">表格二(传递height)：</div>
-    <div class="table-box">
-      <l-table :dataSource="table.data" :height="200" :columns="table.columns">
-      </l-table>
-    </div>
+  <div class="demo-03">
+    <l-querytable
+      v-model="form"
+      :fields="fields"
+      :dataSource="table.data"
+      :columns="table.columns"
+      ></l-querytable>
   </div>
 </template>
 <script>
@@ -69,6 +65,53 @@
           }
         ]
       return {
+        form: {
+          name: '',
+          age: '',
+          sex: '',
+          startTime: '',
+          endTime: ''
+        },
+        fields: [
+          {
+            label: "姓名",
+            prop: "name",
+            clearable: true,
+            type: 'input',
+            handle: (v, item) => {
+              console.log('handle', v, item)
+            }
+          },
+          {
+            type: 'number',
+            label: '年龄',
+            prop: 'age',
+            min: 0,
+            max: 150
+          },
+          {
+            type: 'select',
+            label: '性别',
+            prop: 'sex',
+            options: [
+              {
+                label: '男',
+                value: '1'
+              },
+              {
+                label: '女',
+                value: '2'
+              },
+            ]
+          },
+          {
+            type: 'date',
+            eType: 'datetimerange',
+            prop: 'dateTime',
+            label: '时间',
+            keySets: [ 'startTime', 'endTime' ]
+          },
+        ],
         table: {
           data: (params) => {
             console.log(params)
@@ -105,11 +148,9 @@
   }
 </script>
 <style lang="less">
-.title {
-  font-size: 18px;
-  line-height: 36px;
+.demo-03 {
+  height: 400px;
 }
 </style>
 ```
 :::
-

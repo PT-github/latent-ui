@@ -45,6 +45,10 @@
 					{
 						"label": "表格带分页",
 						"name": "table-pagination"
+					},
+					{
+						"label": "表格带查询",
+						"name": "querytable"
 					}
 				]
 			},
